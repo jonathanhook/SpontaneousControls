@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SpontaneousControls.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WaxRecPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"..\..\WAX3-Utils-Win\waxrec.exe"</Value>
+    </Setting>
+    <Setting Name="FindComPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"..\..\WAX3-Utils-Win\findcom.exe"</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
