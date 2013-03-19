@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="WaxRecPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"..\..\WAX3-Utils-Win\waxrec.exe"</Value>
+      <Value Profile="(Default)">"..\..\..\Dependencies\waxrec.exe"</Value>
     </Setting>
     <Setting Name="FindComPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"..\..\WAX3-Utils-Win\findcom.exe"</Value>
+      <Value Profile="(Default)">"..\..\..\Dependencies\findcom.exe"</Value>
     </Setting>
   </Settings>
 </SettingsFile>
