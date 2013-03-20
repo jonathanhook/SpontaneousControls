@@ -22,23 +22,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using SpontaneousControls.Engine.Recognizers;
-
-namespace SpontaneousControls.Engine
+namespace SpontaneousControls.Engine.Recognizers
 {
-    class Mapping
+    abstract class Recognizer
     {
-        public int SensorId { get; set; }
-        public Recognizer Recognizer { get; set; }
-
-        public Mapping(int sensorId)
-        {
-            this.SensorId = sensorId;
-        }
-
-        public void Update(MotionData data)
-        {
-            Recognizer.Update(data);
-        }
+        public abstract void Update(MotionData data);
     }
 }

@@ -69,8 +69,5 @@ namespace SpontaneousControls.Engine
                 }
             }
         }
-
-
-
     }
 }

@@ -8,5 +8,8 @@
     <Setting Name="FindComPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">"..\..\..\Dependencies\findcom.exe"</Value>
     </Setting>
+    <Setting Name="OscUdpPort" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">1234</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

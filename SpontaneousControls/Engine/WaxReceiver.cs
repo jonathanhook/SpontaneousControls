@@ -63,7 +63,7 @@ namespace SpontaneousControls.Engine
                 {
                     waxRec = new Process();
                     waxRec.StartInfo.FileName = Properties.Settings.Default.WaxRecPath;
-                    waxRec.StartInfo.Arguments = string.Format("\\\\.\\COM4 -osc localhost:1234 -init \"MODE=1\\r\\n", comPort);
+                    waxRec.StartInfo.Arguments = string.Format("\\\\.\\{0} -osc localhost:{1} -init \"MODE=1\\r\\n", comPort, Properties.Settings.Default.OscUdpPort);
                     waxRec.StartInfo.CreateNoWindow = true;
                     waxRec.StartInfo.UseShellExecute = false;
                     waxRec.Start();

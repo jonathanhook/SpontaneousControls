@@ -57,6 +57,14 @@
     <Compile Include="Engine\Mapping.cs" />
     <Compile Include="Engine\MotionData.cs" />
     <Compile Include="Engine\ControlManager.cs" />
+    <Compile Include="Engine\Outputs\ContinuousOuput.cs" />
+    <Compile Include="Engine\Outputs\DiscreteOutput.cs" />
+    <Compile Include="Engine\Outputs\Output.cs" />
+    <Compile Include="Engine\Recognizers\ContinuousValueRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\DualEventRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\Recognizer.cs" />
+    <Compile Include="Engine\Recognizers\EventRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\SliderRecognizer.cs" />
     <Compile Include="Engine\WaxReceiver.cs" />
     <Compile Include="UI\Controls\MappingControl.cs">
       <SubType>UserControl</SubType>

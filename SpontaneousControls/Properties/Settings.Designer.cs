@@ -46,5 +46,17 @@ namespace SpontaneousControls.Properties {
                 this["FindComPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1234")]
+        public uint OscUdpPort {
+            get {
+                return ((uint)(this["OscUdpPort"]));
+            }
+            set {
+                this["OscUdpPort"] = value;
+            }
+        }
     }
 }
