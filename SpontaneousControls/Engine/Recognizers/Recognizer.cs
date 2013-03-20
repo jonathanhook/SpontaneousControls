@@ -26,6 +26,8 @@ namespace SpontaneousControls.Engine.Recognizers
 {
     abstract class Recognizer
     {
+        public static string FreindlyName { get; protected set; }
+
         public abstract void Update(MotionData data);
     }
 }

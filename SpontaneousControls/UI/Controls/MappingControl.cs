@@ -37,14 +37,34 @@ namespace SpontaneousControls.UI.Controls
         {
             InitializeComponent();
 
-            mapping = new Mapping(0);
 
-            ControlManager.GetInstance().RegisterMapping(mapping);
+        }
+
+        public void Initialise()
+        {
+            ControlManager.GetInstance().RegisterMapping(new Mapping(0));
+
+
+        }
+
+        private void PopulateControlTypes()
+        {
+            selectControlTypeCombo.Items.Add
         }
 
         private void sensorIdBox_ValueChanged(object sender, EventArgs e)
         {
             mapping.SensorId = (int)sensorIdBox.Value;
+        }
+
+        private void updateTimer_Tick(object sender, EventArgs e)
+        {
+            if (mapping.LastDataReceived != null)
+            {
+                xAccelerationBox.Text = mapping.LastDataReceived.X.ToString();
+                yAccelerationBox.Text = mapping.LastDataReceived.Y.ToString();
+                zAccelerationBox.Text = mapping.LastDataReceived.Z.ToString();
+            } 
         }
 
     }

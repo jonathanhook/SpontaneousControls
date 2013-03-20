@@ -28,8 +28,9 @@ namespace SpontaneousControls.Engine
 {
     class Mapping
     {
-        public int SensorId { get; set; }
+        public MotionData LastDataReceived { get; private set; }
         public Recognizer Recognizer { get; set; }
+        public int SensorId { get; set; }
 
         public Mapping(int sensorId)
         {
@@ -38,7 +39,8 @@ namespace SpontaneousControls.Engine
 
         public void Update(MotionData data)
         {
-            Recognizer.Update(data);
+            LastDataReceived = data;
+            //Recognizer.Update(data);
         }
     }
 }
