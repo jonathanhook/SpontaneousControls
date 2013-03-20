@@ -38,14 +38,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mappingControl1.Location = new System.Drawing.Point(12, 12);
             this.mappingControl1.Name = "mappingControl1";
-            this.mappingControl1.Size = new System.Drawing.Size(360, 388);
+            this.mappingControl1.Size = new System.Drawing.Size(385, 406);
             this.mappingControl1.TabIndex = 0;
             // 
             // SpontaneousControlsUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 412);
+            this.ClientSize = new System.Drawing.Size(409, 429);
             this.Controls.Add(this.mappingControl1);
             this.Name = "SpontaneousControlsUI";
             this.Text = "Spontaneous Controls";
@@ -56,8 +56,6 @@
         #endregion
 
         private Controls.MappingControl mappingControl1;
-
-
 
 
 

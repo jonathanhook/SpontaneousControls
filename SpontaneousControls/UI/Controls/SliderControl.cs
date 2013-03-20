@@ -25,14 +25,36 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SpontaneousControls.Engine.Recognizers;
+using SpontaneousControls.UI.Trainers;
 
 namespace SpontaneousControls.UI.Controls
 {
     public partial class SliderControl : UserControl
     {
-        public SliderControl()
+        private SliderRecognizer recognizer;
+
+        public SliderControl(SliderRecognizer recognizer)
         {
+            this.recognizer = recognizer;
+            recognizer.ValueChanged += recognizer_ValueChanged;
+
             InitializeComponent();
+        }
+
+        void recognizer_ValueChanged(object sender, float value)
+        {
+            this.Invoke(new Action(() =>
+            {
+                sliderTrackBar.Value = (int)(value * (float)sliderTrackBar.Maximum);
+            }));
+        }
+
+        private void trainButton_Click(object sender, EventArgs e)
+        {
+            SliderTrainer trainer = new SliderTrainer(recognizer);
+            trainer.StartPosition = FormStartPosition.CenterParent;
+            trainer.Show();
         }
     }
 }

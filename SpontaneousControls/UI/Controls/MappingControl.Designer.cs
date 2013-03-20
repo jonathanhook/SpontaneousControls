@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,16 +38,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.sensorIdBox = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.controlPanel = new System.Windows.Forms.Panel();
             this.selectControlTypeCombo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.sliderControl1 = new SpontaneousControls.UI.Controls.SliderControl();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIdBox)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -149,7 +145,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.panel1);
+            this.groupBox2.Controls.Add(this.controlPanel);
             this.groupBox2.Controls.Add(this.selectControlTypeCombo);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(4, 83);
@@ -159,16 +155,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Control";
             // 
-            // panel1
+            // controlPanel
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.controlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel1.Controls.Add(this.sliderControl1);
-            this.panel1.Location = new System.Drawing.Point(10, 69);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 38);
-            this.panel1.TabIndex = 0;
+            this.controlPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.controlPanel.Location = new System.Drawing.Point(6, 69);
+            this.controlPanel.Name = "controlPanel";
+            this.controlPanel.Size = new System.Drawing.Size(372, 38);
+            this.controlPanel.TabIndex = 0;
             // 
             // selectControlTypeCombo
             // 
@@ -180,6 +175,7 @@
             this.selectControlTypeCombo.Name = "selectControlTypeCombo";
             this.selectControlTypeCombo.Size = new System.Drawing.Size(368, 21);
             this.selectControlTypeCombo.TabIndex = 1;
+            this.selectControlTypeCombo.SelectedIndexChanged += new System.EventHandler(this.selectControlTypeCombo_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -202,20 +198,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Output";
             // 
-            // updateTimer
-            // 
-            this.updateTimer.Enabled = true;
-            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
-            // 
-            // sliderControl1
-            // 
-            this.sliderControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sliderControl1.Location = new System.Drawing.Point(4, 4);
-            this.sliderControl1.Name = "sliderControl1";
-            this.sliderControl1.Size = new System.Drawing.Size(351, 31);
-            this.sliderControl1.TabIndex = 0;
-            // 
             // MappingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,7 +212,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sensorIdBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -246,9 +227,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox selectControlTypeCombo;
-        private System.Windows.Forms.Panel panel1;
-        private SliderControl sliderControl1;
-        private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.Panel controlPanel;
         private System.Windows.Forms.TextBox zAccelerationBox;
         private System.Windows.Forms.TextBox yAccelerationBox;
         private System.Windows.Forms.Label label4;

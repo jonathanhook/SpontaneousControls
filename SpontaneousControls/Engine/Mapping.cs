@@ -26,9 +26,11 @@ using SpontaneousControls.Engine.Recognizers;
 
 namespace SpontaneousControls.Engine
 {
-    class Mapping
+    public class Mapping
     {
-        public MotionData LastDataReceived { get; private set; }
+        public delegate void DataReceivedHandler(object sender, MotionData data);
+        public event DataReceivedHandler DataReceived;
+
         public Recognizer Recognizer { get; set; }
         public int SensorId { get; set; }
 
@@ -37,10 +39,25 @@ namespace SpontaneousControls.Engine
             this.SensorId = sensorId;
         }
 
+        public void SetRecognizerByName(string name)
+        {
+            if (name == SliderRecognizer.FreindlyName)
+            {
+                Recognizer = new SliderRecognizer();
+            }
+        }
+
         public void Update(MotionData data)
         {
-            LastDataReceived = data;
-            //Recognizer.Update(data);
+            if (Recognizer != null)
+            {
+                Recognizer.Update(data);
+            }
+
+            if (DataReceived != null)
+            {
+                DataReceived(this, data);
+            }
         }
     }
 }

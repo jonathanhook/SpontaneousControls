@@ -28,39 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.sliderTrackBar = new System.Windows.Forms.TrackBar();
+            this.trainButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
-            // trackBar1
+            // sliderTrackBar
             // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.sliderTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(3, 3);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(255, 45);
-            this.trackBar1.TabIndex = 0;
+            this.sliderTrackBar.Enabled = false;
+            this.sliderTrackBar.Location = new System.Drawing.Point(3, 3);
+            this.sliderTrackBar.Maximum = 25;
+            this.sliderTrackBar.Name = "sliderTrackBar";
+            this.sliderTrackBar.Size = new System.Drawing.Size(255, 45);
+            this.sliderTrackBar.TabIndex = 0;
             // 
-            // button1
+            // trainButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(264, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Train";
-            this.button1.UseVisualStyleBackColor = true;
+            this.trainButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trainButton.Location = new System.Drawing.Point(264, 3);
+            this.trainButton.Name = "trainButton";
+            this.trainButton.Size = new System.Drawing.Size(65, 23);
+            this.trainButton.TabIndex = 1;
+            this.trainButton.Text = "Train";
+            this.trainButton.UseVisualStyleBackColor = true;
+            this.trainButton.Click += new System.EventHandler(this.trainButton_Click);
             // 
             // SliderControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.trainButton);
+            this.Controls.Add(this.sliderTrackBar);
             this.Name = "SliderControl";
             this.Size = new System.Drawing.Size(332, 42);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -68,7 +71,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TrackBar sliderTrackBar;
+        private System.Windows.Forms.Button trainButton;
     }
 }

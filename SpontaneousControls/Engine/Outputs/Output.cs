@@ -24,7 +24,7 @@ using System.Text;
 
 namespace SpontaneousControls.Engine.Outputs
 {
-    abstract class Output
+    public abstract class Output
     {
     }
 }

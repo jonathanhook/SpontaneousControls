@@ -25,8 +25,9 @@ using SpontaneousControls.Engine.Outputs;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
-    abstract class ContinuousValueRecognizer : Recognizer
+    public abstract class ContinuousValueRecognizer : Recognizer
     {
         public ContinuousOuput Output { get; set; }
+        public float Value { get; set; }
     }
 }

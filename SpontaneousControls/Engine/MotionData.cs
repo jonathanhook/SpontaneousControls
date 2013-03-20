@@ -24,7 +24,7 @@ using System.Text;
 
 namespace SpontaneousControls.Engine
 {
-    class MotionData
+    public class MotionData
     {
         public int Id { get; private set; }
         public float X { get; private set; }

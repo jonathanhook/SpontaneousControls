@@ -24,6 +24,8 @@ using System.Text;
 using System.Diagnostics;
 using Bespoke.Common.Osc;
 using System.Net;
+using System.IO;
+using System.Windows.Forms;
 
 namespace SpontaneousControls.Engine
 {
@@ -68,7 +70,7 @@ namespace SpontaneousControls.Engine
                     waxRec.StartInfo.UseShellExecute = false;
                     waxRec.Start();
 
-                    osc = new OscServer(TransportType.Udp, IPAddress.Loopback, 1234);
+                    osc = new OscServer(TransportType.Udp, IPAddress.Loopback, (int)Properties.Settings.Default.OscUdpPort);
                     osc.FilterRegisteredMethods = false;
                     osc.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(osc_MessageReceived);
                     osc.ReceiveErrored += new EventHandler<Bespoke.Common.ExceptionEventArgs>(osc_ReceiveErrored);
@@ -85,6 +87,8 @@ namespace SpontaneousControls.Engine
             if (Connected)
             {
                 waxRec.Kill();
+                osc.Stop();
+
                 Connected = false;
             }
         }

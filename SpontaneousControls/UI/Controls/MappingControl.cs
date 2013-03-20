@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SpontaneousControls.Engine;
+using SpontaneousControls.Engine.Recognizers;
 
 namespace SpontaneousControls.UI.Controls
 {
@@ -37,19 +38,28 @@ namespace SpontaneousControls.UI.Controls
         {
             InitializeComponent();
 
+            mapping = new Mapping((int)sensorIdBox.Value);
+            mapping.DataReceived += mapping_DataReceived;
 
+            ControlManager.GetInstance().RegisterMapping(mapping);
+
+            PopulateControlTypes();
         }
 
-        public void Initialise()
+        private void mapping_DataReceived(object sender, MotionData data)
         {
-            ControlManager.GetInstance().RegisterMapping(new Mapping(0));
-
-
+            this.Invoke(new Action(() =>
+            {
+                xAccelerationBox.Text = data.X.ToString();
+                yAccelerationBox.Text = data.Y.ToString();
+                zAccelerationBox.Text = data.Z.ToString();
+            }));
         }
 
         private void PopulateControlTypes()
         {
-            selectControlTypeCombo.Items.Add
+            selectControlTypeCombo.Items.Add(SliderRecognizer.FreindlyName);
+            selectControlTypeCombo.SelectedIndex = 0;
         }
 
         private void sensorIdBox_ValueChanged(object sender, EventArgs e)
@@ -57,14 +67,22 @@ namespace SpontaneousControls.UI.Controls
             mapping.SensorId = (int)sensorIdBox.Value;
         }
 
-        private void updateTimer_Tick(object sender, EventArgs e)
+        private void selectControlTypeCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (mapping.LastDataReceived != null)
+            mapping.SetRecognizerByName(selectControlTypeCombo.SelectedItem.ToString());
+
+            Control control = null;
+            if (mapping.Recognizer.GetType() == typeof(SliderRecognizer))
             {
-                xAccelerationBox.Text = mapping.LastDataReceived.X.ToString();
-                yAccelerationBox.Text = mapping.LastDataReceived.Y.ToString();
-                zAccelerationBox.Text = mapping.LastDataReceived.Z.ToString();
-            } 
+                control = new SliderControl((SliderRecognizer)mapping.Recognizer);
+            }
+
+            if (control != null)
+            {
+                control.Width = controlPanel.Width;
+                control.Anchor = (AnchorStyles.Top | AnchorStyles.Left |AnchorStyles.Right);
+                controlPanel.Controls.Add(control);
+            }
         }
 
     }

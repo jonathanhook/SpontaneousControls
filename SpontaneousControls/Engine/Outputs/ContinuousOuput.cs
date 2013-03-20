@@ -24,7 +24,7 @@ using System.Text;
 
 namespace SpontaneousControls.Engine.Outputs
 {
-    abstract class ContinuousOuput : Output
+    public abstract class ContinuousOuput : Output
     {
         public abstract void Trigger(float value);
     }

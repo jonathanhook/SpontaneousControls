@@ -24,7 +24,7 @@ using System.Text;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
-    abstract class Recognizer
+    public abstract class Recognizer
     {
         public static string FreindlyName { get; protected set; }
 
