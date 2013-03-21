@@ -21,22 +21,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace SpontaneousControls.Engine
 {
     public class MotionData
     {
         public int Id { get; private set; }
-        public float X { get; private set; }
-        public float Y { get; private set; }
-        public float Z { get; private set; }
+        public Vector3 Data { get; private set; }
 
-        public MotionData(int id, float x, float y, float z)
+        public MotionData(int id, Vector3 data)
         {
             this.Id = id;
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
+            this.Data = data;
         }
     }
 }

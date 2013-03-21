@@ -26,6 +26,7 @@ using Bespoke.Common.Osc;
 using System.Net;
 using System.IO;
 using System.Windows.Forms;
+using Microsoft.Xna.Framework;
 
 namespace SpontaneousControls.Engine
 {
@@ -117,7 +118,7 @@ namespace SpontaneousControls.Engine
             float y = (float)e.Message.Data[1];
             float z = (float)e.Message.Data[2];
 
-            MotionData md = new MotionData(id, x, y, z);
+            MotionData md = new MotionData(id, new Vector3(x, y, z));
             if (DataReceived != null)
             {
                 DataReceived(this, md);

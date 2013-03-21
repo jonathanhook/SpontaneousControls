@@ -50,9 +50,9 @@ namespace SpontaneousControls.UI.Controls
         {
             this.Invoke(new Action(() =>
             {
-                xAccelerationBox.Text = data.X.ToString();
-                yAccelerationBox.Text = data.Y.ToString();
-                zAccelerationBox.Text = data.Z.ToString();
+                xAccelerationBox.Text = data.Data.X.ToString();
+                yAccelerationBox.Text = data.Data.Y.ToString();
+                zAccelerationBox.Text = data.Data.Z.ToString();
             }));
         }
 

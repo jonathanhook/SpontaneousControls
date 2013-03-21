@@ -21,13 +21,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
     public abstract class Recognizer
     {
+        private const float LP_ALPHA = 0.5f;
+
         public static string FreindlyName { get; protected set; }
 
-        public abstract void Update(MotionData data);
+        protected Vector3 lpData;
+        protected Vector3 rawData;
+
+        public virtual void Update(MotionData data)
+        {
+            this.rawData = data.Data;
+
+            lpData.X = rawData.X * LP_ALPHA + (lpData.X * (1.0f - LP_ALPHA));
+            lpData.Y = rawData.Y * LP_ALPHA + (lpData.Y * (1.0f - LP_ALPHA));
+            lpData.Z = rawData.Z * LP_ALPHA + (lpData.Z * (1.0f - LP_ALPHA));
+        }
     }
 }
