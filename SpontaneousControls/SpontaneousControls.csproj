@@ -64,21 +64,28 @@
     <Compile Include="Engine\Outputs\Output.cs" />
     <Compile Include="Engine\Recognizers\ContinuousValueRecognizer.cs" />
     <Compile Include="Engine\Recognizers\DualEventRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\PedalButtonRecognizer.cs" />
     <Compile Include="Engine\Recognizers\Recognizer.cs" />
     <Compile Include="Engine\Recognizers\EventRecognizer.cs" />
-    <Compile Include="Engine\Recognizers\SliderRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\CircularSliderRecognizer.cs" />
     <Compile Include="Engine\WaxReceiver.cs" />
-    <Compile Include="UI\Controls\MappingControl.cs">
+    <Compile Include="UI\MappingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Controls\MappingControl.Designer.cs">
+    <Compile Include="UI\MappingControl.Designer.cs">
       <DependentUpon>MappingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Controls\SliderControl.cs">
+    <Compile Include="UI\Controls\CircularSliderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Controls\SliderControl.Designer.cs">
-      <DependentUpon>SliderControl.cs</DependentUpon>
+    <Compile Include="UI\Controls\CircularSliderControl.Designer.cs">
+      <DependentUpon>CircularSliderControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\PedalButtonControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\PedalButtonControl.Designer.cs">
+      <DependentUpon>PedalButtonControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,11 +95,17 @@
     <Compile Include="UI\SpontaneousControlsUI.Designer.cs">
       <DependentUpon>SpontaneousControlsUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Trainers\SliderTrainer.cs">
+    <Compile Include="UI\Trainers\CircularSliderTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Trainers\SliderTrainer.Designer.cs">
-      <DependentUpon>SliderTrainer.cs</DependentUpon>
+    <Compile Include="UI\Trainers\CircularSliderTrainer.Designer.cs">
+      <DependentUpon>CircularSliderTrainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Trainers\PedalButtonTrainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Trainers\PedalButtonTrainer.Designer.cs">
+      <DependentUpon>PedalButtonTrainer.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,17 +117,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\Controls\MappingControl.resx">
+    <EmbeddedResource Include="UI\MappingControl.resx">
       <DependentUpon>MappingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Controls\SliderControl.resx">
-      <DependentUpon>SliderControl.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Controls\CircularSliderControl.resx">
+      <DependentUpon>CircularSliderControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\PedalButtonControl.resx">
+      <DependentUpon>PedalButtonControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SpontaneousControlsUI.resx">
       <DependentUpon>SpontaneousControlsUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Trainers\SliderTrainer.resx">
-      <DependentUpon>SliderTrainer.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Trainers\CircularSliderTrainer.resx">
+      <DependentUpon>CircularSliderTrainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Trainers\PedalButtonTrainer.resx">
+      <DependentUpon>PedalButtonTrainer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -127,7 +146,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UI\Outputs\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

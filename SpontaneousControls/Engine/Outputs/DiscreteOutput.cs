@@ -24,7 +24,7 @@ using System.Text;
 
 namespace SpontaneousControls.Engine.Outputs
 {
-    abstract class DiscreteOutput : Output
+    public abstract class DiscreteOutput : Output
     {
         public abstract void Trigger();
     }

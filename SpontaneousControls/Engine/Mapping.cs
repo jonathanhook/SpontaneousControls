@@ -41,9 +41,13 @@ namespace SpontaneousControls.Engine
 
         public void SetRecognizerByName(string name)
         {
-            if (name == SliderRecognizer.FreindlyName)
+            if (name == CircularSliderRecognizer.FreindlyName)
             {
-                Recognizer = new SliderRecognizer();
+                Recognizer = new CircularSliderRecognizer();
+            }
+            else if (name == PedalButtonRecognizer.FreindlyName)
+            {
+                Recognizer = new PedalButtonRecognizer();
             }
         }
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mappingControl1 = new SpontaneousControls.UI.Controls.MappingControl();
+            this.mappingControl1 = new SpontaneousControls.UI.MappingControl();
             this.SuspendLayout();
             // 
             // mappingControl1
@@ -55,7 +55,7 @@
 
         #endregion
 
-        private Controls.MappingControl mappingControl1;
+        private MappingControl mappingControl1;
 
 
 

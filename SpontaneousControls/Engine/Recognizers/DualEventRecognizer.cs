@@ -25,7 +25,7 @@ using SpontaneousControls.Engine.Outputs;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
-    abstract class DualEventRecognizer : Recognizer
+    public abstract class DualEventRecognizer : Recognizer
     {
         public DiscreteOutput OutputOne { get; set; }
         public DiscreteOutput OutputTwo { get; set; }
