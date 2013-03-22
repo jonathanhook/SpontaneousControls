@@ -2,7 +2,7 @@
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
- * Copyright (c) 2013 Jonathan Hook. All rights reserved.
+ * Copyright (c) 2013 Newcastle University. All rights reserved.
  *
  * PhysicsSynth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,7 +60,11 @@ namespace SpontaneousControls.UI.Controls
         private void sliderTrackBar_Scroll(object sender, EventArgs e)
         {
             recognizer.Value = (float)sliderTrackBar.Value / (float)sliderTrackBar.Maximum;
-            recognizer.Output.Trigger(recognizer.Value);
+
+            if (recognizer.IsOutputEnabled && recognizer.Output != null)
+            {
+                recognizer.Output.Trigger(recognizer.Value);
+            }
         }
     }
 }

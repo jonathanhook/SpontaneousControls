@@ -47,8 +47,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 429);
             this.Controls.Add(this.mappingControl1);
+            this.KeyPreview = true;
             this.Name = "SpontaneousControlsUI";
             this.Text = "Spontaneous Controls";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SpontaneousControlsUI_KeyPress);
             this.ResumeLayout(false);
 
         }

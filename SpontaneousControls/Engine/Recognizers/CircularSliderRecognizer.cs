@@ -2,7 +2,7 @@
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
- * Copyright (c) 2013 Jonathan Hook. All rights reserved.
+ * Copyright (c) 2013 Newcastle University. All rights reserved.
  *
  * PhysicsSynth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ namespace SpontaneousControls.Engine.Recognizers
 
                 Value = MathHelper.Clamp((fromStart + (1.0f - fromEnd)) / 2.0f, 0.0f, 1.0f);
 
-                if (Output != null)
+                if (IsOutputEnabled && Output != null)
                 {
                     Output.Trigger(Value);
                 }

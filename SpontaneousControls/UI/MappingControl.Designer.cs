@@ -42,6 +42,7 @@
             this.selectControlTypeCombo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.outputEnabled = new System.Windows.Forms.CheckBox();
             this.outputPanel = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIdBox)).BeginInit();
@@ -193,6 +194,7 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.outputEnabled);
             this.groupBox3.Controls.Add(this.outputPanel);
             this.groupBox3.Location = new System.Drawing.Point(4, 202);
             this.groupBox3.Name = "groupBox3";
@@ -201,15 +203,26 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Output";
             // 
+            // outputEnabled
+            // 
+            this.outputEnabled.AutoSize = true;
+            this.outputEnabled.Location = new System.Drawing.Point(10, 20);
+            this.outputEnabled.Name = "outputEnabled";
+            this.outputEnabled.Size = new System.Drawing.Size(253, 17);
+            this.outputEnabled.TabIndex = 1;
+            this.outputEnabled.Text = "Output enabled (press Escape to disable output)";
+            this.outputEnabled.UseVisualStyleBackColor = true;
+            this.outputEnabled.CheckedChanged += new System.EventHandler(this.outputEnabled_CheckedChanged);
+            // 
             // outputPanel
             // 
             this.outputPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.outputPanel.Location = new System.Drawing.Point(6, 19);
+            this.outputPanel.Location = new System.Drawing.Point(6, 43);
             this.outputPanel.Name = "outputPanel";
-            this.outputPanel.Size = new System.Drawing.Size(372, 176);
+            this.outputPanel.Size = new System.Drawing.Size(372, 152);
             this.outputPanel.TabIndex = 0;
             // 
             // MappingControl
@@ -227,6 +240,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -248,6 +262,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel outputPanel;
+        private System.Windows.Forms.CheckBox outputEnabled;
 
     }
 }

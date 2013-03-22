@@ -46,5 +46,25 @@ namespace SpontaneousControls.UI.Controls
             trainer.StartPosition = FormStartPosition.CenterParent;
             trainer.Show();
         }
+
+        private void pedalToggleButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            pedalToggleButton.CheckState = CheckState.Checked;
+
+            if (recognizer.IsOutputEnabled && recognizer.OutputOne != null)
+            {
+                recognizer.OutputOne.Trigger();
+            }
+        }
+
+        private void pedalToggleButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            pedalToggleButton.CheckState = CheckState.Unchecked;
+
+            if (recognizer.IsOutputEnabled && recognizer.OutputTwo != null)
+            {
+                recognizer.OutputTwo.Trigger();
+            }
+        }
     }
 }

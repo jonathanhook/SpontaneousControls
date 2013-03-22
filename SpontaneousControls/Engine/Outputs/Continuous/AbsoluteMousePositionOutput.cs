@@ -2,7 +2,7 @@
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
- * Copyright (c) 2013 Jonathan Hook. All rights reserved.
+ * Copyright (c) 2013 Newcastle University. All rights reserved.
  *
  * PhysicsSynth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,10 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SpontaneousControls.Engine.Outputs.Continuous
 {
@@ -34,7 +36,7 @@ namespace SpontaneousControls.Engine.Outputs.Continuous
         {
             get
             {
-                return "Set mouse position";
+                return "Mouse position";
             }
         }
 
@@ -45,7 +47,21 @@ namespace SpontaneousControls.Engine.Outputs.Continuous
 
         public override void Trigger(float value)
         {
+            int cx = Cursor.Position.X;
+            int cy = Cursor.Position.Y;
 
+            if (Axis == MouseAxis.X)
+            {
+                int sx = Screen.PrimaryScreen.Bounds.Width;
+                cx = (int)((float)sx * value);    
+            }
+            else
+            {
+                int sy = Screen.PrimaryScreen.Bounds.Height;
+                cy = (int)((float)sy * value);
+            }
+
+            Cursor.Position = new Point(cx, cy);
         }
     }
 }

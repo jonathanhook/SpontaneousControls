@@ -2,7 +2,7 @@
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
- * Copyright (c) 2013 Jonathan Hook. All rights reserved.
+ * Copyright (c) 2013 Newcastle University. All rights reserved.
  *
  * PhysicsSynth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ namespace SpontaneousControls.UI.Outputs.Continuous
 
         private void outputTypeCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            recognizer.SetOututByName(outputTypeCombo.SelectedItem.ToString());
+            recognizer.SetOutputByName(outputTypeCombo.SelectedItem.ToString());
 
             Control control = null;
             if (recognizer.Output is AbsoluteMousePositionOutput)

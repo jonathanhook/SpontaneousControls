@@ -2,7 +2,7 @@
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
- * Copyright (c) 2013 Jonathan Hook. All rights reserved.
+ * Copyright (c) 2013 Newcastle University. All rights reserved.
  *
  * PhysicsSynth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,9 +27,11 @@ namespace SpontaneousControls.Engine.Recognizers
 {
     public abstract class Recognizer
     {
-        private const float LP_ALPHA = 0.5f;
+        private const float LP_ALPHA = 0.25f;
 
         public static string FreindlyName { get; protected set; }
+
+        public bool IsOutputEnabled { get; set; } 
 
         protected Vector3 lpData;
         protected Vector3 rawData;

@@ -34,6 +34,7 @@
             this.outputTwoTypeCombo = new System.Windows.Forms.ComboBox();
             this.eventTwoNameLabel = new System.Windows.Forms.Label();
             this.outputTwoControlPanel = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // outputOneTypeCombo
@@ -44,12 +45,12 @@
             this.outputOneTypeCombo.Name = "outputOneTypeCombo";
             this.outputOneTypeCombo.Size = new System.Drawing.Size(166, 21);
             this.outputOneTypeCombo.TabIndex = 6;
-            this.outputOneTypeCombo.SelectedIndexChanged += new System.EventHandler(this.outputOneTypeCombo_SelectedIndexChanged);
+            this.outputOneTypeCombo.SelectedIndexChanged += new System.EventHandler(this.outputTypeCombo_SelectedIndexChanged);
             // 
             // eventOneNameLabel
             // 
             this.eventOneNameLabel.AutoSize = true;
-            this.eventOneNameLabel.Location = new System.Drawing.Point(3, 9);
+            this.eventOneNameLabel.Location = new System.Drawing.Point(0, 9);
             this.eventOneNameLabel.Name = "eventOneNameLabel";
             this.eventOneNameLabel.Size = new System.Drawing.Size(72, 13);
             this.eventOneNameLabel.TabIndex = 8;
@@ -70,16 +71,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputTwoTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.outputTwoTypeCombo.FormattingEnabled = true;
-            this.outputTwoTypeCombo.Location = new System.Drawing.Point(175, 25);
+            this.outputTwoTypeCombo.Location = new System.Drawing.Point(183, 25);
             this.outputTwoTypeCombo.Name = "outputTwoTypeCombo";
-            this.outputTwoTypeCombo.Size = new System.Drawing.Size(159, 21);
+            this.outputTwoTypeCombo.Size = new System.Drawing.Size(180, 21);
             this.outputTwoTypeCombo.TabIndex = 9;
-            this.outputTwoTypeCombo.SelectedIndexChanged += new System.EventHandler(this.outputTwoTypeCombo_SelectedIndexChanged);
+            this.outputTwoTypeCombo.SelectedIndexChanged += new System.EventHandler(this.outputTypeCombo_SelectedIndexChanged);
             // 
             // eventTwoNameLabel
             // 
             this.eventTwoNameLabel.AutoSize = true;
-            this.eventTwoNameLabel.Location = new System.Drawing.Point(172, 9);
+            this.eventTwoNameLabel.Location = new System.Drawing.Point(183, 9);
             this.eventTwoNameLabel.Name = "eventTwoNameLabel";
             this.eventTwoNameLabel.Size = new System.Drawing.Size(72, 13);
             this.eventTwoNameLabel.TabIndex = 11;
@@ -90,15 +91,28 @@
             this.outputTwoControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.outputTwoControlPanel.Location = new System.Drawing.Point(175, 52);
+            this.outputTwoControlPanel.Location = new System.Drawing.Point(183, 52);
             this.outputTwoControlPanel.Name = "outputTwoControlPanel";
-            this.outputTwoControlPanel.Size = new System.Drawing.Size(159, 95);
+            this.outputTwoControlPanel.Size = new System.Drawing.Size(180, 95);
             this.outputTwoControlPanel.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox1.Location = new System.Drawing.Point(175, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(2, 147);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
             // 
             // DualEventRecognizerOutputControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.outputTwoTypeCombo);
             this.Controls.Add(this.eventTwoNameLabel);
             this.Controls.Add(this.outputTwoControlPanel);
@@ -106,7 +120,7 @@
             this.Controls.Add(this.eventOneNameLabel);
             this.Controls.Add(this.outputOneControlPanel);
             this.Name = "DualEventRecognizerOutputControl";
-            this.Size = new System.Drawing.Size(337, 150);
+            this.Size = new System.Drawing.Size(366, 150);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,5 +134,6 @@
         private System.Windows.Forms.ComboBox outputTwoTypeCombo;
         private System.Windows.Forms.Label eventTwoNameLabel;
         private System.Windows.Forms.Panel outputTwoControlPanel;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

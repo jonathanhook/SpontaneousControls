@@ -55,6 +55,8 @@
             this.pedalToggleButton.Text = "Pedal Button";
             this.pedalToggleButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.pedalToggleButton.UseVisualStyleBackColor = true;
+            this.pedalToggleButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pedalToggleButton_MouseDown);
+            this.pedalToggleButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pedalToggleButton_MouseUp);
             // 
             // PedalButtonControl
             // 

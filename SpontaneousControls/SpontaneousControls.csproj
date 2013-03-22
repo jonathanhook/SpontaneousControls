@@ -62,6 +62,7 @@
     <Compile Include="Engine\Outputs\Continuous\AbsoluteMousePositionOutput.cs" />
     <Compile Include="Engine\Outputs\Continuous\ContinuousOuput.cs" />
     <Compile Include="Engine\Outputs\Discrete\DiscreteOutput.cs" />
+    <Compile Include="Engine\Outputs\Discrete\MouseButtonOutput.cs" />
     <Compile Include="Engine\Outputs\Output.cs" />
     <Compile Include="Engine\Recognizers\ContinuousValueRecognizer.cs" />
     <Compile Include="Engine\Recognizers\DualEventRecognizer.cs" />
@@ -111,6 +112,12 @@
     </Compile>
     <Compile Include="UI\Outputs\Discrete\EventRecognizerOutputControl.Designer.cs">
       <DependentUpon>EventRecognizerOutputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\MouseButtonOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\MouseButtonOutputControl.Designer.cs">
+      <DependentUpon>MouseButtonOutputControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Outputs\Discrete\EventRecognizerOutputControl.resx">
       <DependentUpon>EventRecognizerOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outputs\Discrete\MouseButtonOutputControl.resx">
+      <DependentUpon>MouseButtonOutputControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SpontaneousControlsUI.resx">
       <DependentUpon>SpontaneousControlsUI.cs</DependentUpon>

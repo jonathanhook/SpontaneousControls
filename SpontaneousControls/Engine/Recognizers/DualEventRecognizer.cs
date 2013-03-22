@@ -2,7 +2,7 @@
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
- * Copyright (c) 2013 Jonathan Hook. All rights reserved.
+ * Copyright (c) 2013 Newcastle University. All rights reserved.
  *
  * PhysicsSynth is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,26 @@ namespace SpontaneousControls.Engine.Recognizers
         public DiscreteOutput OutputTwo { get; set; }
         public string OutputOneFriendlyName { get; protected set; }
         public string OutputTwoFriendlyName { get; protected set; }
+
+        public void SetOutputOneByName(string name)
+        {
+            OutputOne = GetOutputByName(name);
+        }
+
+        public void SetOutputTwoByName(string name)
+        {
+            OutputTwo = GetOutputByName(name);
+        }
+
+        private DiscreteOutput GetOutputByName(string name)
+        {
+            if (name == MouseButtonOutput.FreindlyName)
+            {
+                return new MouseButtonOutput();
+            }
+
+            return null;
+        }
     }
 }
 
