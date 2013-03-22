@@ -42,6 +42,7 @@
             this.sliderTrackBar.Name = "sliderTrackBar";
             this.sliderTrackBar.Size = new System.Drawing.Size(255, 45);
             this.sliderTrackBar.TabIndex = 0;
+            this.sliderTrackBar.Scroll += new System.EventHandler(this.sliderTrackBar_Scroll);
             // 
             // trainButton
             // 

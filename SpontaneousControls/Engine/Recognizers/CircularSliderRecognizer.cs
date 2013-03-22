@@ -28,6 +28,8 @@ namespace SpontaneousControls.Engine.Recognizers
 {
     public class CircularSliderRecognizer : ContinuousValueRecognizer
     {
+        private const string SLIDER_OUTPUT_FRIENDLY_NAME = "On value changed";
+
         public delegate void ValueChangedHandler(object sender, float value);
         public event ValueChangedHandler ValueChanged;
 
@@ -44,6 +46,7 @@ namespace SpontaneousControls.Engine.Recognizers
 
         public CircularSliderRecognizer()
         {
+            OutputFriendlyName = SLIDER_OUTPUT_FRIENDLY_NAME;
         }
 
         public void SaveStart()

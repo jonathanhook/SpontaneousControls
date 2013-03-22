@@ -21,12 +21,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SpontaneousControls.Engine.Outputs;
+using SpontaneousControls.Engine.Outputs.Discrete;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
-    abstract class EventRecognizer : Recognizer
+    public abstract class EventRecognizer : Recognizer
     {
         public DiscreteOutput Output { get; set; }
+        public string OutputFriendlyName { get; protected set; }
     }
 }

@@ -21,13 +21,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SpontaneousControls.Engine.Outputs;
+using SpontaneousControls.Engine.Outputs.Continuous;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
     public abstract class ContinuousValueRecognizer : Recognizer
     {
         public ContinuousOuput Output { get; set; }
+        public string OutputFriendlyName { get; protected set; }
         public float Value { get; set; }
+
+        public void SetOututByName(string name)
+        {
+            if (name == AbsoluteMousePositionOutput.FreindlyName)
+            {
+                Output = new AbsoluteMousePositionOutput();
+            }
+        }
     }
 }

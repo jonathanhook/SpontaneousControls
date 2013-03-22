@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SpontaneousControls.Engine.Outputs;
+using SpontaneousControls.Engine.Outputs.Discrete;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
@@ -29,6 +29,8 @@ namespace SpontaneousControls.Engine.Recognizers
     {
         public DiscreteOutput OutputOne { get; set; }
         public DiscreteOutput OutputTwo { get; set; }
+        public string OutputOneFriendlyName { get; protected set; }
+        public string OutputTwoFriendlyName { get; protected set; }
     }
 }
 

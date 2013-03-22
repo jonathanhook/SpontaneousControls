@@ -56,5 +56,11 @@ namespace SpontaneousControls.UI.Controls
             trainer.StartPosition = FormStartPosition.CenterParent;
             trainer.Show();
         }
+
+        private void sliderTrackBar_Scroll(object sender, EventArgs e)
+        {
+            recognizer.Value = (float)sliderTrackBar.Value / (float)sliderTrackBar.Maximum;
+            recognizer.Output.Trigger(recognizer.Value);
+        }
     }
 }

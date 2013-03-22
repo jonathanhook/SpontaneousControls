@@ -59,8 +59,9 @@
     <Compile Include="Engine\MedianFilter.cs" />
     <Compile Include="Engine\MotionData.cs" />
     <Compile Include="Engine\ControlManager.cs" />
-    <Compile Include="Engine\Outputs\ContinuousOuput.cs" />
-    <Compile Include="Engine\Outputs\DiscreteOutput.cs" />
+    <Compile Include="Engine\Outputs\Continuous\AbsoluteMousePositionOutput.cs" />
+    <Compile Include="Engine\Outputs\Continuous\ContinuousOuput.cs" />
+    <Compile Include="Engine\Outputs\Discrete\DiscreteOutput.cs" />
     <Compile Include="Engine\Outputs\Output.cs" />
     <Compile Include="Engine\Recognizers\ContinuousValueRecognizer.cs" />
     <Compile Include="Engine\Recognizers\DualEventRecognizer.cs" />
@@ -86,6 +87,30 @@
     </Compile>
     <Compile Include="UI\Controls\PedalButtonControl.Designer.cs">
       <DependentUpon>PedalButtonControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outputs\Continuous\AbsoluteMousePositionOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Continuous\AbsoluteMousePositionOutputControl.Designer.cs">
+      <DependentUpon>AbsoluteMousePositionOutputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outputs\Continuous\ContinuousValueRecognizerOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Continuous\ContinuousValueRecognizerOutputControl.Designer.cs">
+      <DependentUpon>ContinuousValueRecognizerOutputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\DualEventRecognizerOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\DualEventRecognizerOutputControl.Designer.cs">
+      <DependentUpon>DualEventRecognizerOutputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\EventRecognizerOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\EventRecognizerOutputControl.Designer.cs">
+      <DependentUpon>EventRecognizerOutputControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +151,18 @@
     <EmbeddedResource Include="UI\Controls\PedalButtonControl.resx">
       <DependentUpon>PedalButtonControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outputs\Continuous\AbsoluteMousePositionOutputControl.resx">
+      <DependentUpon>AbsoluteMousePositionOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outputs\Continuous\ContinuousValueRecognizerOutputControl.resx">
+      <DependentUpon>ContinuousValueRecognizerOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outputs\Discrete\DualEventRecognizerOutputControl.resx">
+      <DependentUpon>DualEventRecognizerOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outputs\Discrete\EventRecognizerOutputControl.resx">
+      <DependentUpon>EventRecognizerOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\SpontaneousControlsUI.resx">
       <DependentUpon>SpontaneousControlsUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,9 +183,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Outputs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

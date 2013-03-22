@@ -26,5 +26,6 @@ namespace SpontaneousControls.Engine.Outputs
 {
     public abstract class Output
     {
+        public static string FreindlyName { get; protected set; }
     }
 }

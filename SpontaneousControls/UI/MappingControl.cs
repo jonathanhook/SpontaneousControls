@@ -28,6 +28,8 @@ using System.Windows.Forms;
 using SpontaneousControls.Engine;
 using SpontaneousControls.Engine.Recognizers;
 using SpontaneousControls.UI.Controls;
+using SpontaneousControls.UI.Outputs.Continuous;
+using SpontaneousControls.UI.Outputs.Discrete;
 
 namespace SpontaneousControls.UI
 {
@@ -74,11 +76,11 @@ namespace SpontaneousControls.UI
             mapping.SetRecognizerByName(selectControlTypeCombo.SelectedItem.ToString());
 
             Control control = null;
-            if (mapping.Recognizer.GetType() == typeof(CircularSliderRecognizer))
+            if (mapping.Recognizer is CircularSliderRecognizer)
             {
                 control = new CircularSliderControl((CircularSliderRecognizer)mapping.Recognizer);
             }
-            else if (mapping.Recognizer.GetType() == typeof(PedalButtonRecognizer))
+            else if (mapping.Recognizer is PedalButtonRecognizer)
             {
                 control = new PedalButtonControl((PedalButtonRecognizer)mapping.Recognizer);
             }
@@ -87,9 +89,32 @@ namespace SpontaneousControls.UI
             {
                 control.Width = controlPanel.Width;
                 control.Anchor = (AnchorStyles.Top | AnchorStyles.Left |AnchorStyles.Right);
-
                 controlPanel.Controls.Clear();
                 controlPanel.Controls.Add(control);
+            }
+
+            
+
+            Control output = null;
+            if(mapping.Recognizer is ContinuousValueRecognizer)
+            {
+                output = new ContinuousValueRecognizerOutputControl((ContinuousValueRecognizer)mapping.Recognizer);
+            }
+            else if (mapping.Recognizer is EventRecognizer)
+            {
+                output = new EventRecognizerOutputControl((EventRecognizer)mapping.Recognizer);
+            }
+            else if (mapping.Recognizer is DualEventRecognizer)
+            {
+                output = new DualEventRecognizerOutputControl((DualEventRecognizer)mapping.Recognizer);
+            }
+
+            if (output != null)
+            {
+                output.Width = outputPanel.Width;
+                output.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                outputPanel.Controls.Clear();
+                outputPanel.Controls.Add(output);
             }
         }
 
