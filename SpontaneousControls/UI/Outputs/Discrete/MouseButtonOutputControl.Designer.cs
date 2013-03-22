@@ -37,7 +37,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-3, 5);
+            this.label1.Location = new System.Drawing.Point(-3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.buttonCombo.FormattingEnabled = true;
-            this.buttonCombo.Location = new System.Drawing.Point(0, 22);
+            this.buttonCombo.Location = new System.Drawing.Point(0, 16);
             this.buttonCombo.Name = "buttonCombo";
             this.buttonCombo.Size = new System.Drawing.Size(150, 21);
             this.buttonCombo.TabIndex = 1;
@@ -58,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-3, 46);
+            this.label2.Location = new System.Drawing.Point(-3, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 2;
@@ -70,7 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.eventTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.eventTypeCombo.FormattingEnabled = true;
-            this.eventTypeCombo.Location = new System.Drawing.Point(0, 63);
+            this.eventTypeCombo.Location = new System.Drawing.Point(0, 56);
             this.eventTypeCombo.Name = "eventTypeCombo";
             this.eventTypeCombo.Size = new System.Drawing.Size(150, 21);
             this.eventTypeCombo.TabIndex = 3;

@@ -49,7 +49,7 @@ namespace SpontaneousControls.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1737")]
+        [global::System.Configuration.DefaultSettingValueAttribute("13714")]
         public uint OscUdpPort {
             get {
                 return ((uint)(this["OscUdpPort"]));

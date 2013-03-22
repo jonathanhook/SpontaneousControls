@@ -9,7 +9,7 @@
       <Value Profile="(Default)">"X:\GitHub\SpontaneousControls\Dependencies\findcom.exe"</Value>
     </Setting>
     <Setting Name="OscUdpPort" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">1737</Value>
+      <Value Profile="(Default)">13714</Value>
     </Setting>
   </Settings>
 </SettingsFile>

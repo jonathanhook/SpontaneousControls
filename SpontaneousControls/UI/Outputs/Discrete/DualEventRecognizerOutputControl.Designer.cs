@@ -62,7 +62,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.outputOneControlPanel.Location = new System.Drawing.Point(3, 52);
             this.outputOneControlPanel.Name = "outputOneControlPanel";
-            this.outputOneControlPanel.Size = new System.Drawing.Size(166, 95);
+            this.outputOneControlPanel.Size = new System.Drawing.Size(166, 299);
             this.outputOneControlPanel.TabIndex = 7;
             // 
             // outputTwoTypeCombo
@@ -80,7 +80,7 @@
             // eventTwoNameLabel
             // 
             this.eventTwoNameLabel.AutoSize = true;
-            this.eventTwoNameLabel.Location = new System.Drawing.Point(183, 9);
+            this.eventTwoNameLabel.Location = new System.Drawing.Point(180, 9);
             this.eventTwoNameLabel.Name = "eventTwoNameLabel";
             this.eventTwoNameLabel.Size = new System.Drawing.Size(72, 13);
             this.eventTwoNameLabel.TabIndex = 11;
@@ -93,7 +93,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputTwoControlPanel.Location = new System.Drawing.Point(183, 52);
             this.outputTwoControlPanel.Name = "outputTwoControlPanel";
-            this.outputTwoControlPanel.Size = new System.Drawing.Size(180, 95);
+            this.outputTwoControlPanel.Size = new System.Drawing.Size(180, 299);
             this.outputTwoControlPanel.TabIndex = 10;
             // 
             // groupBox1
@@ -104,7 +104,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Location = new System.Drawing.Point(175, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(2, 147);
+            this.groupBox1.Size = new System.Drawing.Size(2, 351);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             // 
@@ -112,6 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.outputTwoTypeCombo);
             this.Controls.Add(this.eventTwoNameLabel);
@@ -120,7 +121,7 @@
             this.Controls.Add(this.eventOneNameLabel);
             this.Controls.Add(this.outputOneControlPanel);
             this.Name = "DualEventRecognizerOutputControl";
-            this.Size = new System.Drawing.Size(366, 150);
+            this.Size = new System.Drawing.Size(366, 354);
             this.ResumeLayout(false);
             this.PerformLayout();
 

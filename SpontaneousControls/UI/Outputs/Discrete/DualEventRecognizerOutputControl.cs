@@ -26,12 +26,13 @@ namespace SpontaneousControls.UI.Outputs.Discrete
             eventTwoNameLabel.Text = recognizer.OutputTwoFriendlyName;
 
             PopulateOutputTypes(outputOneTypeCombo, 0);
-            PopulateOutputTypes(outputTwoTypeCombo, 1);
+            PopulateOutputTypes(outputTwoTypeCombo, 2);
         }
 
         private void PopulateOutputTypes(ComboBox combo, int initalSelection)
         {
             combo.Items.Add(MouseButtonOutput.FreindlyName);
+            combo.Items.Add(KeyboardOutput.FreindlyName);
             combo.Items.Add(NONE_ITEM);
             combo.SelectedIndex = initalSelection;
         }
@@ -58,6 +59,10 @@ namespace SpontaneousControls.UI.Outputs.Discrete
             if (output is MouseButtonOutput)
             {
                 control = new MouseButtonOutputControl((MouseButtonOutput)output);
+            }
+            else if (output is KeyboardOutput)
+            {
+                control = new KeyboardOutputControl((KeyboardOutput)output);
             }
             else
             {

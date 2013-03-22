@@ -35,6 +35,7 @@ namespace SpontaneousControls.UI
 {
     public partial class MappingControl : UserControl
     {
+
         private Mapping mapping;
 
         public MappingControl()
@@ -70,6 +71,8 @@ namespace SpontaneousControls.UI
             selectControlTypeCombo.Items.Add(PedalButtonRecognizer.FreindlyName);
             selectControlTypeCombo.SelectedIndex = 0;
         }
+
+
 
         private void sensorIdBox_ValueChanged(object sender, EventArgs e)
         {

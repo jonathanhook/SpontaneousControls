@@ -48,6 +48,10 @@ namespace SpontaneousControls.Engine.Recognizers
             {
                 return new MouseButtonOutput();
             }
+            else if (name == KeyboardOutput.FreindlyName)
+            {
+                return new KeyboardOutput();
+            }
 
             return null;
         }

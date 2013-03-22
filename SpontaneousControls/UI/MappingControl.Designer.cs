@@ -220,6 +220,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.outputPanel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.outputPanel.Location = new System.Drawing.Point(6, 43);
             this.outputPanel.Name = "outputPanel";
             this.outputPanel.Size = new System.Drawing.Size(372, 152);
