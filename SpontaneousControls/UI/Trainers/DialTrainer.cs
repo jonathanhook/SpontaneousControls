@@ -1,4 +1,5 @@
-﻿/**
+﻿using SpontaneousControls.Engine.Recognizers;
+/**
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
@@ -25,38 +26,27 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SpontaneousControls.Engine.Recognizers;
 
 namespace SpontaneousControls.UI.Trainers
 {
-    public partial class PedalButtonTrainer : Form
+    public partial class DialTrainer : Form
     {
-        private PedalButtonRecognizer recognizer;
+        private DialRecognizer recognizer;
 
-        public PedalButtonTrainer(PedalButtonRecognizer recognizer)
+        public DialTrainer(DialRecognizer recognizer)
         {
-            this.recognizer = recognizer;
             InitializeComponent();
+            this.recognizer = recognizer;
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            recognizer.SaveStart();
         }
 
         private void doneButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void pressedButton_Click(object sender, EventArgs e)
-        {
-            recognizer.SaveDown();
-        }
-
-        private void releasedButton_Click(object sender, EventArgs e)
-        {
-            recognizer.SaveUp();
-        }
-
-        private void sensitivityTrackBar_Scroll(object sender, EventArgs e)
-        {
-            recognizer.Sensitivity = (float)sensitivityTrackBar.Value / (float)sensitivityTrackBar.Maximum;
         }
     }
 }

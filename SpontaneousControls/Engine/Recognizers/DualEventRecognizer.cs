@@ -52,6 +52,14 @@ namespace SpontaneousControls.Engine.Recognizers
             {
                 return new KeyboardOutput();
             }
+            else if (name == MediaPlayerOutput.FreindlyName)
+            {
+                return new MediaPlayerOutput();
+            }
+            else if (name == WebBrowserOutput.FreindlyName)
+            {
+                return new WebBrowserOutput();
+            }
 
             return null;
         }

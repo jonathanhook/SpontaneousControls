@@ -49,6 +49,10 @@ namespace SpontaneousControls.Engine
             {
                 Recognizer = new PedalButtonRecognizer();
             }
+            else if (name == DialRecognizer.FreindlyName)
+            {
+                Recognizer = new DialRecognizer();
+            }
         }
 
         public void Update(MotionData data)

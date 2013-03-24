@@ -20,43 +20,31 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SpontaneousControls.Engine.Recognizers;
+using SpontaneousControls.UI.Trainers;
 
-namespace SpontaneousControls.UI.Trainers
+namespace SpontaneousControls.UI.Controls
 {
-    public partial class PedalButtonTrainer : Form
+    public partial class DialRecognizerControl : UserControl
     {
-        private PedalButtonRecognizer recognizer;
+        private DialRecognizer recognizer;
 
-        public PedalButtonTrainer(PedalButtonRecognizer recognizer)
+        public DialRecognizerControl(DialRecognizer recognizer)
         {
-            this.recognizer = recognizer;
             InitializeComponent();
+            this.recognizer = recognizer;
         }
 
-        private void doneButton_Click(object sender, EventArgs e)
+        private void trainButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void pressedButton_Click(object sender, EventArgs e)
-        {
-            recognizer.SaveDown();
-        }
-
-        private void releasedButton_Click(object sender, EventArgs e)
-        {
-            recognizer.SaveUp();
-        }
-
-        private void sensitivityTrackBar_Scroll(object sender, EventArgs e)
-        {
-            recognizer.Sensitivity = (float)sensitivityTrackBar.Value / (float)sensitivityTrackBar.Maximum;
+            DialTrainer trainer = new DialTrainer(recognizer);
+            trainer.StartPosition = FormStartPosition.CenterParent;
+            trainer.Show();
         }
     }
 }

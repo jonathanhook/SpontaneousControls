@@ -25,15 +25,17 @@ namespace SpontaneousControls.UI.Outputs.Discrete
             eventOneNameLabel.Text = recognizer.OutputOneFriendlyName;
             eventTwoNameLabel.Text = recognizer.OutputTwoFriendlyName;
 
-            PopulateOutputTypes(outputOneTypeCombo, 0);
-            PopulateOutputTypes(outputTwoTypeCombo, 2);
+            PopulateOutputTypes(outputOneTypeCombo, 1);
+            PopulateOutputTypes(outputTwoTypeCombo, 0);
         }
 
         private void PopulateOutputTypes(ComboBox combo, int initalSelection)
         {
+            combo.Items.Add(NONE_ITEM);
             combo.Items.Add(MouseButtonOutput.FreindlyName);
             combo.Items.Add(KeyboardOutput.FreindlyName);
-            combo.Items.Add(NONE_ITEM);
+            combo.Items.Add(MediaPlayerOutput.FreindlyName);
+            combo.Items.Add(WebBrowserOutput.FreindlyName);
             combo.SelectedIndex = initalSelection;
         }
 
@@ -63,6 +65,14 @@ namespace SpontaneousControls.UI.Outputs.Discrete
             else if (output is KeyboardOutput)
             {
                 control = new KeyboardOutputControl((KeyboardOutput)output);
+            }
+            else if (output is MediaPlayerOutput)
+            {
+                control = new MediaPlayerOutputControl((MediaPlayerOutput)output);
+            }
+            else if (output is WebBrowserOutput)
+            {
+                control = new WebBrowserOutputControl((WebBrowserOutput)output);
             }
             else
             {

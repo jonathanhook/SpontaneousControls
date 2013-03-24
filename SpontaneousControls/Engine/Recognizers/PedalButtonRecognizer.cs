@@ -27,7 +27,7 @@ namespace SpontaneousControls.Engine.Recognizers
 {
     public class PedalButtonRecognizer : DualEventRecognizer
     {
-        private const float PRESSED_THRESHOLD = 0.5f;
+        private const float DEFAULT_SENISIVITY = 0.5f;
         private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pedal pressed";
         private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On pedal released";
 
@@ -36,6 +36,8 @@ namespace SpontaneousControls.Engine.Recognizers
 
         public delegate void PedalButtonReleasedHandler(object sender);
         public event PedalButtonReleasedHandler PedalButtonReleased;
+
+        public float Sensitivity { get; set; }
 
         private Vector3 up;
         private Vector3 down;
@@ -49,7 +51,7 @@ namespace SpontaneousControls.Engine.Recognizers
             }
         }
 
-        public PedalButtonRecognizer()
+        public PedalButtonRecognizer(float sensitivity = DEFAULT_SENISIVITY)
         {
             OutputOneFriendlyName = PEDAL_OUTPUT_ONE_FRIENDLY_NAME;
             OutputTwoFriendlyName = PEDAL_OUTPUT_TWO_FRIENDLY_NAME;
@@ -77,7 +79,7 @@ namespace SpontaneousControls.Engine.Recognizers
                 float fromDown = (1.0f - Vector3.Dot(down, lpData)) / total;
 
                 float position = MathHelper.Clamp((fromUp + (1.0f - fromDown)) / 2.0f, 0.0f, 1.0f);
-                if (!pressed && position > PRESSED_THRESHOLD)
+                if (!pressed && position > Sensitivity)
                 {
                     pressed = true;
 
@@ -91,7 +93,7 @@ namespace SpontaneousControls.Engine.Recognizers
                         PedalButtonPressed(this);
                     }
                 }
-                else if (pressed && position <= PRESSED_THRESHOLD)
+                else if (pressed && position <= Sensitivity)
                 {                  
                     pressed = false;
 

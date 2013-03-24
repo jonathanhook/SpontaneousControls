@@ -19,44 +19,43 @@
  */
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SpontaneousControls.Engine.Recognizers;
 
-namespace SpontaneousControls.UI.Trainers
+namespace SpontaneousControls.Engine.Outputs.Discrete
 {
-    public partial class PedalButtonTrainer : Form
+    public class WebBrowserOutput : DiscreteOutput
     {
-        private PedalButtonRecognizer recognizer;
-
-        public PedalButtonTrainer(PedalButtonRecognizer recognizer)
+        public enum WebBrowserEventType
         {
-            this.recognizer = recognizer;
-            InitializeComponent();
+            BrowserBack = 166,
+            BrowserForward = 167,
+            BrowserRefresh = 168,
+            BrowserStop = 169,
+            BrowserSearch = 170,
+            BrowserFavorites = 171,
+            BrowserHome = 172
         }
 
-        private void doneButton_Click(object sender, EventArgs e)
+        public WebBrowserEventType EventType { get; set; }
+
+        new public static string FreindlyName
         {
-            this.Close();
+            get
+            {
+                return "Web browser";
+            }
         }
 
-        private void pressedButton_Click(object sender, EventArgs e)
+        public WebBrowserOutput(WebBrowserEventType eventType = WebBrowserEventType.BrowserRefresh)
         {
-            recognizer.SaveDown();
+            this.EventType = eventType;
         }
 
-        private void releasedButton_Click(object sender, EventArgs e)
+        public override void Trigger()
         {
-            recognizer.SaveUp();
-        }
-
-        private void sensitivityTrackBar_Scroll(object sender, EventArgs e)
-        {
-            recognizer.Sensitivity = (float)sensitivityTrackBar.Value / (float)sensitivityTrackBar.Maximum;
+            Keyboard.GetInstance().Tap((Keys)EventType);
         }
     }
 }

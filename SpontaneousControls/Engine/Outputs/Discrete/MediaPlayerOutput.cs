@@ -19,44 +19,43 @@
  */
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SpontaneousControls.Engine.Recognizers;
 
-namespace SpontaneousControls.UI.Trainers
+namespace SpontaneousControls.Engine.Outputs.Discrete
 {
-    public partial class PedalButtonTrainer : Form
+    public class MediaPlayerOutput : DiscreteOutput
     {
-        private PedalButtonRecognizer recognizer;
-
-        public PedalButtonTrainer(PedalButtonRecognizer recognizer)
+        public enum MediaPlayerEventType
         {
-            this.recognizer = recognizer;
-            InitializeComponent();
+            VolumeMute = 173,
+            VolumeDown = 174,
+            VolumeUp = 175,
+            MediaNextTrack = 176,
+            MediaPreviousTrack = 177,
+            MediaStop = 178,
+            MediaPlayPause = 179
         }
 
-        private void doneButton_Click(object sender, EventArgs e)
+        public MediaPlayerEventType EventType { get; set; }
+
+        new public static string FreindlyName
         {
-            this.Close();
+            get
+            {
+                return "Media player";
+            }
         }
 
-        private void pressedButton_Click(object sender, EventArgs e)
+        public MediaPlayerOutput(MediaPlayerEventType eventType = MediaPlayerEventType.MediaPlayPause)
         {
-            recognizer.SaveDown();
+            this.EventType = eventType;
         }
 
-        private void releasedButton_Click(object sender, EventArgs e)
+        public override void Trigger()
         {
-            recognizer.SaveUp();
-        }
-
-        private void sensitivityTrackBar_Scroll(object sender, EventArgs e)
-        {
-            recognizer.Sensitivity = (float)sensitivityTrackBar.Value / (float)sensitivityTrackBar.Maximum;
+            Keyboard.GetInstance().Tap((Keys)EventType);
         }
     }
 }

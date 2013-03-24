@@ -64,15 +64,24 @@
     <Compile Include="Engine\Outputs\Discrete\DiscreteOutput.cs" />
     <Compile Include="Engine\Outputs\Discrete\Keyboard.cs" />
     <Compile Include="Engine\Outputs\Discrete\KeyboardOutput.cs" />
+    <Compile Include="Engine\Outputs\Discrete\MediaPlayerOutput.cs" />
     <Compile Include="Engine\Outputs\Discrete\MouseButtonOutput.cs" />
+    <Compile Include="Engine\Outputs\Discrete\WebBrowserOutput.cs" />
     <Compile Include="Engine\Outputs\Output.cs" />
     <Compile Include="Engine\Recognizers\ContinuousValueRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\DialRecognizer.cs" />
     <Compile Include="Engine\Recognizers\DualEventRecognizer.cs" />
     <Compile Include="Engine\Recognizers\PedalButtonRecognizer.cs" />
     <Compile Include="Engine\Recognizers\Recognizer.cs" />
     <Compile Include="Engine\Recognizers\EventRecognizer.cs" />
     <Compile Include="Engine\Recognizers\CircularSliderRecognizer.cs" />
     <Compile Include="Engine\WaxReceiver.cs" />
+    <Compile Include="UI\Controls\DialRecognizerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\DialRecognizerControl.Designer.cs">
+      <DependentUpon>DialRecognizerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MappingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,11 +130,23 @@
     <Compile Include="UI\Outputs\Discrete\KeyboardOutputControl.Designer.cs">
       <DependentUpon>KeyboardOutputControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Outputs\Discrete\MediaPlayerOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\MediaPlayerOutputControl.Designer.cs">
+      <DependentUpon>MediaPlayerOutputControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Outputs\Discrete\MouseButtonOutputControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\Outputs\Discrete\MouseButtonOutputControl.Designer.cs">
       <DependentUpon>MouseButtonOutputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\WebBrowserOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Discrete\WebBrowserOutputControl.Designer.cs">
+      <DependentUpon>WebBrowserOutputControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,6 +161,12 @@
     </Compile>
     <Compile Include="UI\Trainers\CircularSliderTrainer.Designer.cs">
       <DependentUpon>CircularSliderTrainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Trainers\DialTrainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Trainers\DialTrainer.Designer.cs">
+      <DependentUpon>DialTrainer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Trainers\PedalButtonTrainer.cs">
       <SubType>Form</SubType>
@@ -157,6 +184,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Controls\DialRecognizerControl.resx">
+      <DependentUpon>DialRecognizerControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\MappingControl.resx">
       <DependentUpon>MappingControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,14 +211,23 @@
     <EmbeddedResource Include="UI\Outputs\Discrete\KeyboardOutputControl.resx">
       <DependentUpon>KeyboardOutputControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outputs\Discrete\MediaPlayerOutputControl.resx">
+      <DependentUpon>MediaPlayerOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Outputs\Discrete\MouseButtonOutputControl.resx">
       <DependentUpon>MouseButtonOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Outputs\Discrete\WebBrowserOutputControl.resx">
+      <DependentUpon>WebBrowserOutputControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SpontaneousControlsUI.resx">
       <DependentUpon>SpontaneousControlsUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Trainers\CircularSliderTrainer.resx">
       <DependentUpon>CircularSliderTrainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Trainers\DialTrainer.resx">
+      <DependentUpon>DialTrainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Trainers\PedalButtonTrainer.resx">
       <DependentUpon>PedalButtonTrainer.cs</DependentUpon>
