@@ -36,10 +36,10 @@ namespace SpontaneousControls.UI.Controls
 
         public CircularSliderControl(CircularSliderRecognizer recognizer)
         {
+            InitializeComponent();
+
             this.recognizer = recognizer;
             recognizer.ValueChanged += recognizer_ValueChanged;
-
-            InitializeComponent();
         }
 
         void recognizer_ValueChanged(object sender, float value)

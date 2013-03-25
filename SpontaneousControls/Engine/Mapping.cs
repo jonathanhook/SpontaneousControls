@@ -53,6 +53,10 @@ namespace SpontaneousControls.Engine
             {
                 Recognizer = new DialRecognizer();
             }
+            else if (name == RotaryEncoderRecognizer.FreindlyName)
+            {
+                Recognizer = new RotaryEncoderRecognizer();
+            }
         }
 
         public void Update(MotionData data)

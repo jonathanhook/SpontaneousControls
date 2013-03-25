@@ -84,7 +84,7 @@
             // 
             // doneButton
             // 
-            this.doneButton.Location = new System.Drawing.Point(90, 224);
+            this.doneButton.Location = new System.Drawing.Point(107, 199);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(75, 23);
             this.doneButton.TabIndex = 4;
@@ -103,7 +103,7 @@
             this.groupBox2.Size = new System.Drawing.Size(260, 75);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Quarter";
+            this.groupBox2.Text = "Quarter Position";
             // 
             // button1
             // 
@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 259);
+            this.ClientSize = new System.Drawing.Size(284, 228);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.doneButton);
             this.Controls.Add(this.label1);

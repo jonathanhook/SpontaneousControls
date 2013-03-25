@@ -1,4 +1,5 @@
-﻿/**
+﻿using SpontaneousControls.Engine.Recognizers;
+/**
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
@@ -20,50 +21,44 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SpontaneousControls.Engine.Recognizers;
-using SpontaneousControls.UI.Trainers;
 
-namespace SpontaneousControls.UI.Controls
+namespace SpontaneousControls.UI.Trainers
 {
-    public partial class DialRecognizerControl : UserControl
+    public partial class RotaryEncoderTrainer : Form
     {
-        private DialRecognizer recognizer;
+        private RotaryEncoderRecognizer recognizer;
 
-        public DialRecognizerControl(DialRecognizer recognizer)
+        public RotaryEncoderTrainer(RotaryEncoderRecognizer recognizer)
         {
             InitializeComponent();
             this.recognizer = recognizer;
-            recognizer.ValueChanged += recognizer_ValueChanged;
+
+            incrementsTrackBar.Value = recognizer.Increments;
         }
 
-        private void recognizer_ValueChanged(object sender, float value)
+        private void quarterButton_Click(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() =>
-            {
-                dialTrackBar.Value = (int)(value * (float)dialTrackBar.Maximum);
-            }));
+            recognizer.SaveQuarter();
         }
 
-        private void trainButton_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
-            DialTrainer trainer = new DialTrainer(recognizer);
-            trainer.StartPosition = FormStartPosition.CenterParent;
-            trainer.Show();
+            recognizer.SaveStart();
         }
 
-        private void dialTrackBar_Scroll(object sender, EventArgs e)
+        private void doneButton_Click(object sender, EventArgs e)
         {
-            recognizer.Value = (float)dialTrackBar.Value / (float)dialTrackBar.Maximum;
+            this.Close();
+        }
 
-            if (recognizer.IsOutputEnabled && recognizer.Output != null)
-            {
-                recognizer.Output.Trigger(recognizer.Value);
-            }
+        private void incrementsTrackBar_Scroll(object sender, EventArgs e)
+        {
+            recognizer.Increments = incrementsTrackBar.Value;
         }
     }
 }

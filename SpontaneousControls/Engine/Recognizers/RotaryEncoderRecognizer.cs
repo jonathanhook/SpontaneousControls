@@ -25,27 +25,38 @@ using System.Text;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
-    public class DialRecognizer : ContinuousValueRecognizer
+    public class RotaryEncoderRecognizer : DualEventRecognizer
     {
-        private const string SLIDER_OUTPUT_FRIENDLY_NAME = "On value changed";
+        private const string ROTARY_ENCODER_OUTPUT_ONE_FRIENDLY_NAME = "On rotate clockwise";
+        private const string ROTARY_ENCODER_OUTPUT_TWO_FRIENDLY_NAME = "On rotate anti-clockwise";
+        private const int DEFAULT_INCREMENTS = 15;
 
-        public delegate void ValueChangedHandler(object sender, float value);
-        public event ValueChangedHandler ValueChanged;
+        public delegate void RotaryEncoderClockwiseHandler(object sender);
+        public event RotaryEncoderClockwiseHandler RotaryEncoderClockwise;
 
-        private Vector3 start;
-        private Vector3 quarter;
+        public delegate void RotaryEncoderAntiClockwiseHandler(object sender);
+        public event RotaryEncoderAntiClockwiseHandler RotaryEncoderAntiClockwise;
 
         new public static string FreindlyName
         {
             get
             {
-                return "Dial";
+                return "Rotary encoder";
             }
         }
 
-        public DialRecognizer()
+        public int Increments { get; set; }
+
+        private Vector3 start;
+        private Vector3 quarter;
+        private int last;
+
+        public RotaryEncoderRecognizer(int increments = DEFAULT_INCREMENTS)
         {
-            OutputFriendlyName = SLIDER_OUTPUT_FRIENDLY_NAME;
+            this.Increments = increments;
+
+            OutputOneFriendlyName = ROTARY_ENCODER_OUTPUT_ONE_FRIENDLY_NAME;
+            OutputTwoFriendlyName = ROTARY_ENCODER_OUTPUT_TWO_FRIENDLY_NAME;
         }
 
         public void SaveStart()
@@ -62,7 +73,7 @@ namespace SpontaneousControls.Engine.Recognizers
         {
             base.Update(data);
 
-            if (start != null && 
+            if (start != null &&
                 start.Length() != 0.0f &&
                 quarter != null &&
                 quarter.Length() != 0.0f)
@@ -84,23 +95,48 @@ namespace SpontaneousControls.Engine.Recognizers
                 Vector3 v3 = Vector3.Cross(vn, lpData);
                 float sign = Vector3.Dot(v3, start);
 
+                float value = 0.0f;
                 if (sign <= 0.0f)
                 {
-                    Value = v / 2.0f;
+                    value = v / 2.0f;
                 }
                 else
                 {
-                    Value = 1.0f - (v / 2.0f);
+                    value = 1.0f - (v / 2.0f);
                 }
 
-                if (IsOutputEnabled && Output != null)
-                {
-                    Output.Trigger(Value);
-                }
+                float incrementF = 1.0f / (float)Increments;
+                int position = (int)(value / incrementF);
+                int diff = Math.Abs(position - last);
 
-                if (ValueChanged != null)
+                if (diff != 0)
                 {
-                    ValueChanged(this, Value);
+                    if ((position > last && diff == 1) || (position < last && diff > 1))
+                    {
+                        if (RotaryEncoderAntiClockwise != null)
+                        {
+                            RotaryEncoderAntiClockwise(this);
+                        }
+
+                        if (IsOutputEnabled)
+                        {
+                            OutputTwo.Trigger();
+                        }
+                    }
+                    else if((position < last && diff == 1) || (position > last && diff > 1))
+                    {
+                        if (RotaryEncoderClockwise != null)
+                        {
+                            RotaryEncoderClockwise(this);
+                        }
+
+                        if (IsOutputEnabled)
+                        {
+                            OutputOne.Trigger();
+                        }
+                    }
+
+                    last = position;
                 }
             }
         }

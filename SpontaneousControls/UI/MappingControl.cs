@@ -70,6 +70,7 @@ namespace SpontaneousControls.UI
             selectControlTypeCombo.Items.Add(CircularSliderRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(PedalButtonRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(DialRecognizer.FreindlyName);
+            selectControlTypeCombo.Items.Add(RotaryEncoderRecognizer.FreindlyName);
             selectControlTypeCombo.SelectedIndex = 0;
         }
 
@@ -96,6 +97,10 @@ namespace SpontaneousControls.UI
             else if (mapping.Recognizer is DialRecognizer)
             {
                 control = new DialRecognizerControl((DialRecognizer)mapping.Recognizer);
+            }
+            else if (mapping.Recognizer is RotaryEncoderRecognizer)
+            {
+                control = new RotaryEncoderRecognizerControl((RotaryEncoderRecognizer)mapping.Recognizer);
             }
 
             if (control != null)
