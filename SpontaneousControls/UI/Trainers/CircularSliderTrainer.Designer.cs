@@ -70,7 +70,7 @@
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(115, 47);
             this.startButton.TabIndex = 1;
-            this.startButton.Text = "Save Start Position";
+            this.startButton.Text = "Save start position";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
@@ -103,7 +103,7 @@
             this.endButton.Name = "endButton";
             this.endButton.Size = new System.Drawing.Size(115, 47);
             this.endButton.TabIndex = 2;
-            this.endButton.Text = "Save End Position";
+            this.endButton.Text = "Save end position";
             this.endButton.UseVisualStyleBackColor = true;
             this.endButton.Click += new System.EventHandler(this.endButton_Click);
             // 

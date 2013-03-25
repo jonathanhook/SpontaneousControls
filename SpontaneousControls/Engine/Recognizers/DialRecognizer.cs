@@ -14,6 +14,7 @@ namespace SpontaneousControls.Engine.Recognizers
         public event ValueChangedHandler ValueChanged;
 
         private Vector3 start;
+        private Vector3 quarter;
 
         new public static string FreindlyName
         {
@@ -33,29 +34,48 @@ namespace SpontaneousControls.Engine.Recognizers
             start = lpData;
         }
 
+        public void SaveQuarter()
+        {
+            quarter = lpData;
+        }
+
         public override void Update(MotionData data)
         {
             base.Update(data);
 
-            if (start != null && start.Length() != 0.0f)
+            if (start != null && 
+                start.Length() != 0.0f &&
+                quarter != null &&
+                quarter.Length() != 0.0f)
             {
-                Vector3 end = new Vector3(-start.X, -start.Y, -start.Z);
-
-                Vector3 lpDataN, startN, endN;
+                Vector3 lpDataN, startN, quarterN;
                 Vector3.Normalize(ref lpData, out lpDataN);
                 Vector3.Normalize(ref start, out startN);
-                Vector3.Normalize(ref end, out endN);
+                Vector3.Normalize(ref quarter, out quarterN);
 
-                float total = 1.0f - Vector3.Dot(startN, endN);
-                float fromStart = (1.0f - Vector3.Dot(startN, lpDataN)) / total;
-                float fromEnd = (1.0f - Vector3.Dot(endN, lpDataN)) / total;
+                float fromStart = (float)Math.Abs(Vector3.Dot(startN, lpDataN) - 1.0f) / (float)(Math.PI / 2.0);
+                float fromQuarter = (float)Math.Abs(Vector3.Dot(quarterN, lpDataN) - 1.0f) / (float)(Math.PI / 2.0);
 
-                Vector3 vn = end;
-                Vector3 v3 = Vector3.Cross(vn, lpData);
-                float sign = Vector3.Dot(v3, start);
-                
-                Value = MathHelper.Clamp((fromStart + (1.0f - fromEnd)) / 2.0f, 0.0f, 1.0f);
-                Console.WriteLine(sign);
+                if (fromQuarter <= 0.5f)
+                {
+                    Value = MathHelper.Clamp(fromStart / 2.0f, 0.0f, 1.0f);
+                }
+                else
+                {
+                    Value = MathHelper.Clamp(1.0f - (fromStart / 2.0f), 0.0f, 1.0f);
+                }
+
+                if (IsOutputEnabled && Output != null)
+                {
+                    Output.Trigger(Value);
+                }
+
+                if (ValueChanged != null)
+                {
+                    ValueChanged(this, Value);
+                }
+
+                Console.WriteLine(Value);
             }
         }
     }

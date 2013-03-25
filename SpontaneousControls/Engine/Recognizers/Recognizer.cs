@@ -39,12 +39,10 @@ namespace SpontaneousControls.Engine.Recognizers
         public virtual void Update(MotionData data)
         {
             this.rawData = data.Data;
-            //rawData.Normalize();
 
             lpData.X = rawData.X * LP_ALPHA + (lpData.X * (1.0f - LP_ALPHA));
             lpData.Y = rawData.Y * LP_ALPHA + (lpData.Y * (1.0f - LP_ALPHA));
             lpData.Z = rawData.Z * LP_ALPHA + (lpData.Z * (1.0f - LP_ALPHA));
-            //lpData.Normalize();
         }
     }
 }

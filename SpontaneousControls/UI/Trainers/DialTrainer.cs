@@ -48,5 +48,10 @@ namespace SpontaneousControls.UI.Trainers
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            recognizer.SaveQuarter();
+        }
     }
 }

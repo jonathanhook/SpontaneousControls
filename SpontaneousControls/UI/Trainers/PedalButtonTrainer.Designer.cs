@@ -37,8 +37,8 @@
             this.releasedButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.sensitivityTrackBar = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,7 +85,7 @@
             this.pressedButton.Name = "pressedButton";
             this.pressedButton.Size = new System.Drawing.Size(128, 47);
             this.pressedButton.TabIndex = 2;
-            this.pressedButton.Text = "Save Pressed Position";
+            this.pressedButton.Text = "Save pressed position";
             this.pressedButton.UseVisualStyleBackColor = true;
             this.pressedButton.Click += new System.EventHandler(this.pressedButton_Click);
             // 
@@ -118,7 +118,7 @@
             this.releasedButton.Name = "releasedButton";
             this.releasedButton.Size = new System.Drawing.Size(128, 47);
             this.releasedButton.TabIndex = 1;
-            this.releasedButton.Text = "Save Released Position";
+            this.releasedButton.Text = "Save released position";
             this.releasedButton.UseVisualStyleBackColor = true;
             this.releasedButton.Click += new System.EventHandler(this.releasedButton_Click);
             // 
@@ -143,6 +143,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Sensivity";
             // 
+            // sensitivityTrackBar
+            // 
+            this.sensitivityTrackBar.Location = new System.Drawing.Point(9, 57);
+            this.sensitivityTrackBar.Name = "sensitivityTrackBar";
+            this.sensitivityTrackBar.Size = new System.Drawing.Size(244, 45);
+            this.sensitivityTrackBar.TabIndex = 1;
+            this.sensitivityTrackBar.Value = 5;
+            this.sensitivityTrackBar.Scroll += new System.EventHandler(this.sensitivityTrackBar_Scroll);
+            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -152,15 +161,6 @@
             this.label4.Size = new System.Drawing.Size(244, 33);
             this.label4.TabIndex = 0;
             this.label4.Text = "Use the slider to set how sensitive your pedal button will be.";
-            // 
-            // sensitivityTrackBar
-            // 
-            this.sensitivityTrackBar.Location = new System.Drawing.Point(12, 57);
-            this.sensitivityTrackBar.Name = "sensitivityTrackBar";
-            this.sensitivityTrackBar.Size = new System.Drawing.Size(241, 45);
-            this.sensitivityTrackBar.TabIndex = 1;
-            this.sensitivityTrackBar.Value = 5;
-            this.sensitivityTrackBar.Scroll += new System.EventHandler(this.sensitivityTrackBar_Scroll);
             // 
             // PedalButtonTrainer
             // 
@@ -176,7 +176,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PedalButtonTrainer";
-            this.Text = "PedalButtonTrainer";
+            this.Text = "Pedal Button Training";
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

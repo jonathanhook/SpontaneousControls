@@ -33,7 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.doneButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -49,11 +53,11 @@
             // 
             this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.startButton.Location = new System.Drawing.Point(139, 20);
+            this.startButton.Location = new System.Drawing.Point(131, 20);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(115, 47);
+            this.startButton.Size = new System.Drawing.Size(123, 47);
             this.startButton.TabIndex = 1;
-            this.startButton.Text = "Save Start Position";
+            this.startButton.Text = "Save start position";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
@@ -61,9 +65,9 @@
             // 
             this.label2.Location = new System.Drawing.Point(7, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 47);
+            this.label2.Size = new System.Drawing.Size(118, 47);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Put your slider into its start position and press the save button.";
+            this.label2.Text = "Turn your dial into its start (zero) position and press the save button.";
             // 
             // groupBox1
             // 
@@ -80,7 +84,7 @@
             // 
             // doneButton
             // 
-            this.doneButton.Location = new System.Drawing.Point(103, 118);
+            this.doneButton.Location = new System.Drawing.Point(90, 224);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(75, 23);
             this.doneButton.TabIndex = 4;
@@ -88,11 +92,45 @@
             this.doneButton.UseVisualStyleBackColor = true;
             this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(12, 118);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(260, 75);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Quarter";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(131, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 47);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Save quarter Position";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(7, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(118, 47);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Turn your dial to its one quarter position and press the save button.";
+            // 
             // DialTrainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 148);
+            this.ClientSize = new System.Drawing.Size(284, 259);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.doneButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -100,8 +138,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DialTrainer";
-            this.Text = "DialTrainer";
+            this.Text = "Dial Training";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +153,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button doneButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }
