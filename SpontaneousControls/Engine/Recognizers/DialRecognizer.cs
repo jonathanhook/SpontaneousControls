@@ -39,7 +39,7 @@ namespace SpontaneousControls.Engine.Recognizers
 
             if (start != null && start.Length() != 0.0f)
             {
-                Vector3 end = new Vector3(start.X * -1.0f, start.Y * -1.0f, start.Z * -1.0f);
+                Vector3 end = new Vector3(-start.X, -start.Y, -start.Z);
 
                 Vector3 lpDataN, startN, endN;
                 Vector3.Normalize(ref lpData, out lpDataN);
@@ -53,7 +53,7 @@ namespace SpontaneousControls.Engine.Recognizers
                 Vector3 vn = end;
                 Vector3 v3 = Vector3.Cross(vn, lpData);
                 float sign = Vector3.Dot(v3, start);
-
+                
                 Value = MathHelper.Clamp((fromStart + (1.0f - fromEnd)) / 2.0f, 0.0f, 1.0f);
                 Console.WriteLine(sign);
             }
