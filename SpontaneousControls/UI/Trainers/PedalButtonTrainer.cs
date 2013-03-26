@@ -35,8 +35,10 @@ namespace SpontaneousControls.UI.Trainers
 
         public PedalButtonTrainer(PedalButtonRecognizer recognizer)
         {
-            this.recognizer = recognizer;
             InitializeComponent();
+            
+            this.recognizer = recognizer;
+            sensitivityTrackBar.Value = (int)((float)recognizer.Sensitivity * (float)sensitivityTrackBar.Maximum);
         }
 
         private void doneButton_Click(object sender, EventArgs e)

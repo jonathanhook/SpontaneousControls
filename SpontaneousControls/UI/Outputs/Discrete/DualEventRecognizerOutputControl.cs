@@ -33,6 +33,7 @@ namespace SpontaneousControls.UI.Outputs.Discrete
         {
             combo.Items.Add(NONE_ITEM);
             combo.Items.Add(MouseButtonOutput.FreindlyName);
+            combo.Items.Add(MouseScrollOutput.FreindlyName);
             combo.Items.Add(KeyboardOutput.FreindlyName);
             combo.Items.Add(MediaPlayerOutput.FreindlyName);
             combo.Items.Add(WebBrowserOutput.FreindlyName);
@@ -73,6 +74,10 @@ namespace SpontaneousControls.UI.Outputs.Discrete
             else if (output is WebBrowserOutput)
             {
                 control = new WebBrowserOutputControl((WebBrowserOutput)output);
+            }
+            else if (output is MouseScrollOutput)
+            {
+                control = new MouseScrollOutputControl((MouseScrollOutput)output);
             }
             else
             {

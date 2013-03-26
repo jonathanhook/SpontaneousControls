@@ -60,6 +60,10 @@ namespace SpontaneousControls.Engine.Recognizers
             {
                 return new WebBrowserOutput();
             }
+            else if (name == MouseScrollOutput.FreindlyName)
+            {
+                return new MouseScrollOutput();
+            }
 
             return null;
         }

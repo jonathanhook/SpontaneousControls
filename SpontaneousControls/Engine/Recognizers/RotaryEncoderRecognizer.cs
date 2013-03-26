@@ -118,7 +118,7 @@ namespace SpontaneousControls.Engine.Recognizers
                             RotaryEncoderAntiClockwise(this);
                         }
 
-                        if (IsOutputEnabled)
+                        if (IsOutputEnabled && OutputTwo != null)
                         {
                             OutputTwo.Trigger();
                         }
@@ -130,7 +130,7 @@ namespace SpontaneousControls.Engine.Recognizers
                             RotaryEncoderClockwise(this);
                         }
 
-                        if (IsOutputEnabled)
+                        if (IsOutputEnabled && OutputOne != null)
                         {
                             OutputOne.Trigger();
                         }
