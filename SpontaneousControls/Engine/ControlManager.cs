@@ -49,6 +49,11 @@ namespace SpontaneousControls.Engine
             mappings = new List<Mapping>();
         }
 
+        public void Disconnect()
+        {
+            waxReceiver.Disconnect();
+        }
+
         public void RegisterMapping(Mapping mapping)
         {
             mappings.Add(mapping);

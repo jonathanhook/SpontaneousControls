@@ -57,6 +57,10 @@ namespace SpontaneousControls.Engine
             {
                 Recognizer = new RotaryEncoderRecognizer();
             }
+            else if (name == MovementRecognizer.FreindlyName)
+            {
+                Recognizer = new MovementRecognizer();
+            }
         }
 
         public void Update(MotionData data)

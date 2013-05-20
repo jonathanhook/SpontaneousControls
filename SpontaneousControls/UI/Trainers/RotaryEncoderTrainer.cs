@@ -1,5 +1,4 @@
-﻿using SpontaneousControls.Engine.Recognizers;
-/**
+﻿/**
  * This file is part of Spontaneous Controls.
  *
  * Created by Jonathan Hook (jonathan.hook@ncl.ac.uk)
@@ -18,6 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Spontaneous Controls.  If not, see <http://www.gnu.org/licenses/>.
  */
+using SpontaneousControls.Engine.Recognizers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -37,7 +37,7 @@
             this.trainButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trainButton.Location = new System.Drawing.Point(260, 3);
             this.trainButton.Name = "trainButton";
-            this.trainButton.Size = new System.Drawing.Size(65, 23);
+            this.trainButton.Size = new System.Drawing.Size(65, 24);
             this.trainButton.TabIndex = 2;
             this.trainButton.Text = "Train";
             this.trainButton.UseVisualStyleBackColor = true;

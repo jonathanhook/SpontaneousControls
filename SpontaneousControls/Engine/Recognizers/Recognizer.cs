@@ -31,8 +31,9 @@ namespace SpontaneousControls.Engine.Recognizers
 
         public static string FreindlyName { get; protected set; }
 
-        public bool IsOutputEnabled { get; set; } 
+        public bool IsOutputEnabled { get; set; }
 
+        protected Vector3 hpData;
         protected Vector3 lpData;
         protected Vector3 rawData;
 
@@ -43,6 +44,10 @@ namespace SpontaneousControls.Engine.Recognizers
             lpData.X = rawData.X * LP_ALPHA + (lpData.X * (1.0f - LP_ALPHA));
             lpData.Y = rawData.Y * LP_ALPHA + (lpData.Y * (1.0f - LP_ALPHA));
             lpData.Z = rawData.Z * LP_ALPHA + (lpData.Z * (1.0f - LP_ALPHA));
+
+            hpData.X = rawData.X - lpData.X;
+            hpData.Y = rawData.Y - lpData.Y;
+            hpData.Z = rawData.Z - lpData.Z;
         }
     }
 }

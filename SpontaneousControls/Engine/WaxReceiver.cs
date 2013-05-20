@@ -32,6 +32,9 @@ namespace SpontaneousControls.Engine
 {
     class WaxReceiver
     {
+        private const uint MIN_OSC_PORT = 4000;
+        private const uint MAX_OSC_PORT = 5000;
+
         public delegate void DataReceivedHandler(object sender, MotionData data); 
         public event DataReceivedHandler DataReceived;
 
@@ -62,23 +65,44 @@ namespace SpontaneousControls.Engine
                 findCom.BeginOutputReadLine();
                 findCom.WaitForExit();
 
-                if (comPort != null)
+                uint oscPort = MIN_OSC_PORT;
+                bool oscConnected = false;
+                while (!oscConnected && oscPort < MAX_OSC_PORT)
                 {
-                    waxRec = new Process();
-                    waxRec.StartInfo.FileName = Properties.Settings.Default.WaxRecPath;
-                    waxRec.StartInfo.Arguments = string.Format("\\\\.\\{0} -osc localhost:{1} -init \"MODE=1\\r\\n", comPort, Properties.Settings.Default.OscUdpPort);
-                    waxRec.StartInfo.CreateNoWindow = true;
-                    waxRec.StartInfo.UseShellExecute = false;
-                    waxRec.Start();
-
-                    osc = new OscServer(TransportType.Udp, IPAddress.Loopback, (int)Properties.Settings.Default.OscUdpPort);
+                    osc = new OscServer(TransportType.Udp, IPAddress.Loopback, (int)oscPort);
                     osc.FilterRegisteredMethods = false;
                     osc.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(osc_MessageReceived);
                     osc.ReceiveErrored += new EventHandler<Bespoke.Common.ExceptionEventArgs>(osc_ReceiveErrored);
                     osc.BundleReceived += new EventHandler<OscBundleReceivedEventArgs>(osc_BundleReceived);
-                    osc.Start();
 
-                    Connected = true;
+                    try
+                    {
+                        osc.Start();
+                        oscConnected = true;
+                    }
+                    catch (Exception e)
+                    {
+                        oscPort++;
+                    }
+                }
+
+                if (!oscConnected)
+                {
+                    throw new Exception("Could not connect to any UDP port in the specified range");
+                }
+                else if(comPort != null)
+                {
+                    waxRec = new Process();
+                    waxRec.StartInfo.FileName = Properties.Settings.Default.WaxRecPath;
+                    waxRec.StartInfo.Arguments = string.Format("\\\\.\\{0} -osc localhost:{1} -init \"MODE=1\\r\\n", comPort, oscPort);
+                    waxRec.StartInfo.CreateNoWindow = true;
+                    waxRec.StartInfo.UseShellExecute = false;
+                    waxRec.Start();
+
+                    if (!waxRec.HasExited)
+                    {
+                        Connected = true;
+                    }
                 }
             }
         }
@@ -87,8 +111,15 @@ namespace SpontaneousControls.Engine
         {
             if (Connected)
             {
-                waxRec.Kill();
-                osc.Stop();
+                if (waxRec != null && !waxRec.HasExited)
+                {
+                    waxRec.Kill();
+                }
+
+                if (osc != null && osc.IsRunning)
+                {
+                    osc.Stop();
+                }
 
                 Connected = false;
             }

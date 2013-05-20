@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using SpontaneousControls.Engine;
 using SpontaneousControls.UI;
 
 namespace SpontaneousControls.UI
@@ -33,6 +34,8 @@ namespace SpontaneousControls.UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SpontaneousControlsUI());
+
+            ControlManager.GetInstance().Disconnect();
         }
     }
 }
