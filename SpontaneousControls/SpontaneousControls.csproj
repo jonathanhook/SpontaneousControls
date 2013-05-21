@@ -80,6 +80,7 @@
     <Compile Include="Engine\Recognizers\EventRecognizer.cs" />
     <Compile Include="Engine\Recognizers\CircularSliderRecognizer.cs" />
     <Compile Include="Engine\Recognizers\RotaryEncoderRecognizer.cs" />
+    <Compile Include="Engine\SlidingWindow.cs" />
     <Compile Include="Engine\WaxReceiver.cs" />
     <Compile Include="UI\Controls\DialControl.cs">
       <SubType>UserControl</SubType>

@@ -39,11 +39,17 @@ namespace SpontaneousControls.UI.Trainers
 
             this.recognizer = recognizer;
             sensitivityTrackBar.Value = (int)((float)recognizer.Sensitivity * (float)sensitivityTrackBar.Maximum);
+            repeatTrackBar.Value = (int)((float)recognizer.Repeat * (float)repeatTrackBar.Maximum);
         }
 
         private void sensitivityTrackBar_Scroll(object sender, EventArgs e)
         {
             recognizer.Sensitivity = (float)sensitivityTrackBar.Value / (float)sensitivityTrackBar.Maximum;
+        }
+
+        private void repeatTrackBar_Scroll(object sender, EventArgs e)
+        {
+            recognizer.Repeat = (float)repeatTrackBar.Value / (float)repeatTrackBar.Maximum;
         }
     }
 }
