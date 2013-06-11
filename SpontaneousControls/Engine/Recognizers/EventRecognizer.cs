@@ -29,5 +29,36 @@ namespace SpontaneousControls.Engine.Recognizers
     {
         public DiscreteOutput Output { get; set; }
         public string OutputFriendlyName { get; protected set; }
+
+        public void SetOutputByName(string name)
+        {
+            Output = GetOutputByName(name);
+        }
+
+        private DiscreteOutput GetOutputByName(string name)
+        {
+            if (name == MouseButtonOutput.FreindlyName)
+            {
+                return new MouseButtonOutput();
+            }
+            else if (name == KeyboardOutput.FreindlyName)
+            {
+                return new KeyboardOutput();
+            }
+            else if (name == MediaPlayerOutput.FreindlyName)
+            {
+                return new MediaPlayerOutput();
+            }
+            else if (name == WebBrowserOutput.FreindlyName)
+            {
+                return new WebBrowserOutput();
+            }
+            else if (name == MouseScrollOutput.FreindlyName)
+            {
+                return new MouseScrollOutput();
+            }
+
+            return null;
+        }
     }
 }

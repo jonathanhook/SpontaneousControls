@@ -1,6 +1,6 @@
 ﻿namespace SpontaneousControls.UI.Controls
 {
-    partial class RotaryEncoderRecognizerControl
+    partial class RotaryEncoderControl
     {
         /// <summary> 
         /// Required designer variable.

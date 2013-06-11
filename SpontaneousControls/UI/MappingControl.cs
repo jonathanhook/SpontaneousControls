@@ -35,7 +35,6 @@ namespace SpontaneousControls.UI
 {
     public partial class MappingControl : UserControl
     {
-
         private Mapping mapping;
 
         public MappingControl()
@@ -71,10 +70,9 @@ namespace SpontaneousControls.UI
             selectControlTypeCombo.Items.Add(PedalButtonRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(DialRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(RotaryEncoderRecognizer.FreindlyName);
+            selectControlTypeCombo.Items.Add(MovementRecognizer.FreindlyName);
             selectControlTypeCombo.SelectedIndex = 0;
         }
-
-
 
         private void sensorIdBox_ValueChanged(object sender, EventArgs e)
         {
@@ -100,7 +98,11 @@ namespace SpontaneousControls.UI
             }
             else if (mapping.Recognizer is RotaryEncoderRecognizer)
             {
-                control = new RotaryEncoderRecognizerControl((RotaryEncoderRecognizer)mapping.Recognizer);
+                control = new RotaryEncoderControl((RotaryEncoderRecognizer)mapping.Recognizer);
+            }
+            else if (mapping.Recognizer is MovementRecognizer)
+            {
+                control = new MovementControl((MovementRecognizer)mapping.Recognizer);
             }
 
             if (control != null)

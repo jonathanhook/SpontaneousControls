@@ -11,7 +11,8 @@
     <RootNamespace>SpontaneousControls</RootNamespace>
     <AssemblyName>SpontaneousControls</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -45,6 +46,7 @@
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Workflow.ComponentModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,23 +74,31 @@
     <Compile Include="Engine\Recognizers\ContinuousValueRecognizer.cs" />
     <Compile Include="Engine\Recognizers\DialRecognizer.cs" />
     <Compile Include="Engine\Recognizers\DualEventRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\MovementRecognizer.cs" />
     <Compile Include="Engine\Recognizers\PedalButtonRecognizer.cs" />
     <Compile Include="Engine\Recognizers\Recognizer.cs" />
     <Compile Include="Engine\Recognizers\EventRecognizer.cs" />
     <Compile Include="Engine\Recognizers\CircularSliderRecognizer.cs" />
     <Compile Include="Engine\Recognizers\RotaryEncoderRecognizer.cs" />
+    <Compile Include="Engine\SlidingWindow.cs" />
     <Compile Include="Engine\WaxReceiver.cs" />
-    <Compile Include="UI\Controls\DialRecognizerControl.cs">
+    <Compile Include="UI\Controls\DialControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Controls\DialRecognizerControl.Designer.cs">
-      <DependentUpon>DialRecognizerControl.cs</DependentUpon>
+    <Compile Include="UI\Controls\DialControl.Designer.cs">
+      <DependentUpon>DialControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Controls\RotaryEncoderRecognizerControl.cs">
+    <Compile Include="UI\Controls\MovementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Controls\RotaryEncoderRecognizerControl.Designer.cs">
-      <DependentUpon>RotaryEncoderRecognizerControl.cs</DependentUpon>
+    <Compile Include="UI\Controls\MovementControl.Designer.cs">
+      <DependentUpon>MovementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\RotaryEncoderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\RotaryEncoderControl.Designer.cs">
+      <DependentUpon>RotaryEncoderControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MappingControl.cs">
       <SubType>UserControl</SubType>
@@ -182,6 +192,12 @@
     <Compile Include="UI\Trainers\DialTrainer.Designer.cs">
       <DependentUpon>DialTrainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Trainers\MovementTrainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Trainers\MovementTrainer.Designer.cs">
+      <DependentUpon>MovementTrainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Trainers\PedalButtonTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,11 +220,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\Controls\DialRecognizerControl.resx">
-      <DependentUpon>DialRecognizerControl.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Controls\DialControl.resx">
+      <DependentUpon>DialControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Controls\RotaryEncoderRecognizerControl.resx">
-      <DependentUpon>RotaryEncoderRecognizerControl.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Controls\MovementControl.resx">
+      <DependentUpon>MovementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\RotaryEncoderControl.resx">
+      <DependentUpon>RotaryEncoderControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MappingControl.resx">
       <DependentUpon>MappingControl.cs</DependentUpon>
@@ -254,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Trainers\DialTrainer.resx">
       <DependentUpon>DialTrainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Trainers\MovementTrainer.resx">
+      <DependentUpon>MovementTrainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Trainers\PedalButtonTrainer.resx">
       <DependentUpon>PedalButtonTrainer.cs</DependentUpon>

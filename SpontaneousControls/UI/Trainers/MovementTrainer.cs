@@ -17,7 +17,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Spontaneous Controls.  If not, see <http://www.gnu.org/licenses/>.
  */
-using SpontaneousControls.Engine.Recognizers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,39 +25,31 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SpontaneousControls.Engine.Recognizers;
 
 namespace SpontaneousControls.UI.Trainers
 {
-    public partial class RotaryEncoderTrainer : Form
+    public partial class MovementTrainer : Form
     {
-        private RotaryEncoderRecognizer recognizer;
+        private MovementRecognizer recognizer;
 
-        public RotaryEncoderTrainer(RotaryEncoderRecognizer recognizer)
+        public MovementTrainer(MovementRecognizer recognizer)
         {
             InitializeComponent();
+
             this.recognizer = recognizer;
-
-            incrementsTrackBar.Value = recognizer.Increments;
+            sensitivityTrackBar.Value = (int)((float)recognizer.Sensitivity * (float)sensitivityTrackBar.Maximum);
+            repeatTrackBar.Value = (int)((float)recognizer.Repeat * (float)repeatTrackBar.Maximum);
         }
 
-        private void quarterButton_Click(object sender, EventArgs e)
+        private void sensitivityTrackBar_Scroll(object sender, EventArgs e)
         {
-            recognizer.SaveQuarter();
+            recognizer.Sensitivity = (float)sensitivityTrackBar.Value / (float)sensitivityTrackBar.Maximum;
         }
 
-        private void startButton_Click(object sender, EventArgs e)
+        private void repeatTrackBar_Scroll(object sender, EventArgs e)
         {
-            recognizer.SaveStart();
-        }
-
-        private void doneButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void incrementsTrackBar_Scroll(object sender, EventArgs e)
-        {
-            recognizer.Increments = incrementsTrackBar.Value;
+            recognizer.Repeat = (float)repeatTrackBar.Value / (float)repeatTrackBar.Maximum;
         }
     }
 }

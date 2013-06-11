@@ -12,11 +12,11 @@ using System.Threading;
 
 namespace SpontaneousControls.UI.Controls
 {
-    public partial class RotaryEncoderRecognizerControl : UserControl
+    public partial class RotaryEncoderControl : UserControl
     {
         private RotaryEncoderRecognizer recognizer;
 
-        public RotaryEncoderRecognizerControl(RotaryEncoderRecognizer recognizer)
+        public RotaryEncoderControl(RotaryEncoderRecognizer recognizer)
         {
             InitializeComponent();
 
