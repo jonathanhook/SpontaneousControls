@@ -73,11 +73,15 @@ namespace SpontaneousControls.Engine.Recognizers
                 Vector3.Normalize(ref start, out startN);
                 Vector3.Normalize(ref end, out endN);
 
-                float total = 1.0f - Vector3.Dot(startN, endN);
-                float fromStart = (1.0f - Vector3.Dot(startN, lpDataN)) / total;
-                float fromEnd = (1.0f - Vector3.Dot(endN, lpDataN)) / total;
+                float total = Vector3.Dot(startN, endN);
+                float fromStart = Vector3.Dot(startN, lpDataN);
+                float fromEnd = Vector3.Dot(endN, lpDataN);
 
-                Value = MathHelper.Clamp((fromStart + (1.0f - fromEnd)) / 2.0f, 0.0f, 1.0f);
+                float aTotal = (float)Math.Acos((double)total);
+                float aFromStart = (float)Math.Acos((double)fromStart) / aTotal;
+                float aFromEnd = (float)Math.Acos((double)fromEnd) / aTotal;
+
+                Value = MathHelper.Clamp((aFromStart + (1.0f - aFromEnd)) / 2.0f, 0.0f, 1.0f);
 
                 if (IsOutputEnabled && Output != null)
                 {

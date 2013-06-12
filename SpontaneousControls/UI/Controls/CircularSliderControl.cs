@@ -46,7 +46,7 @@ namespace SpontaneousControls.UI.Controls
         {
             this.Invoke(new Action(() =>
             {
-                sliderTrackBar.Value = (int)(value * (float)sliderTrackBar.Maximum);
+                sliderTrackBar.Value = (int)Math.Round(value * (float)sliderTrackBar.Maximum);
             }));
         }
 

@@ -53,5 +53,10 @@ namespace SpontaneousControls.UI.Trainers
         {
             recognizer.SaveQuarter();
         }
+
+        private void endButton_Click(object sender, EventArgs e)
+        {
+            recognizer.SaveEnd();
+        }
     }
 }

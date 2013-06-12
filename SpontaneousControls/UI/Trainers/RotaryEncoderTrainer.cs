@@ -60,5 +60,10 @@ namespace SpontaneousControls.UI.Trainers
         {
             recognizer.Increments = incrementsTrackBar.Value;
         }
+
+        private void endButton_Click(object sender, EventArgs e)
+        {
+            recognizer.SaveEnd();
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace SpontaneousControls.UI.Controls
         {
             this.Invoke(new Action(() =>
             {
-                dialTrackBar.Value = (int)(value * (float)dialTrackBar.Maximum);
+                dialTrackBar.Value = (int)Math.Round(value * (float)dialTrackBar.Maximum);
             }));
         }
 
