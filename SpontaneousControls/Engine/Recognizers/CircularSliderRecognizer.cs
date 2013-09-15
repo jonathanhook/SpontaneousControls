@@ -40,7 +40,7 @@ namespace SpontaneousControls.Engine.Recognizers
         {
             get
             {
-                return "Slider (circular path)";
+                return "Slider (curved path)";
             }
         }
 

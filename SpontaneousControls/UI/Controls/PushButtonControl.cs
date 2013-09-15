@@ -30,55 +30,45 @@ using SpontaneousControls.UI.Trainers;
 
 namespace SpontaneousControls.UI.Controls
 {
-    public partial class PedalButtonControl : UserControl
+    public partial class PushButtonControl : UserControl
     {
-        private PedalButtonRecognizer recognizer;
+        private PushButtonRecognizer recognizer;
 
-        public PedalButtonControl(PedalButtonRecognizer recognizer)
+        public PushButtonControl(PushButtonRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            recognizer.PedalButtonPressed += recognizer_PedalButtonPressed;
-            recognizer.PedalButtonReleased += recognizer_PedalButtonReleased;
+            recognizer.PushButtonPressed += recognizer_PushButtonPressed;
+            recognizer.PushButtonReleased += recognizer_PushButtonReleased;
 
             InitializeComponent();
         }
 
-        private void recognizer_PedalButtonReleased(object sender)
+        private void recognizer_PushButtonReleased(object sender)
         {
             this.Invoke(new Action(() =>
             {
-                pedalToggleButton.CheckState = CheckState.Unchecked;
+                pushToggleButton.CheckState = CheckState.Unchecked;
             }));
         }
 
-        private void recognizer_PedalButtonPressed(object sender)
+        private void recognizer_PushButtonPressed(object sender)
         {
             this.Invoke(new Action(() =>
             {
-                pedalToggleButton.CheckState = CheckState.Checked;
+                pushToggleButton.CheckState = CheckState.Checked;
             }));
         }
 
         private void trainButton_Click(object sender, EventArgs e)
         {
-            PedalButtonTrainer trainer = new PedalButtonTrainer(recognizer);
+            PushButtonTrainer trainer = new PushButtonTrainer(recognizer);
             trainer.StartPosition = FormStartPosition.CenterParent;
             trainer.Show();
         }
 
-        private void pedalToggleButton_MouseDown(object sender, MouseEventArgs e)
+        private void pushToggleButton_MouseUp(object sender, MouseEventArgs e)
         {
-            pedalToggleButton.CheckState = CheckState.Checked;
-
-            if (recognizer.IsOutputEnabled && recognizer.OutputOne != null)
-            {
-                recognizer.OutputOne.Trigger();
-            }
-        }
-
-        private void pedalToggleButton_MouseUp(object sender, MouseEventArgs e)
-        {
-            pedalToggleButton.CheckState = CheckState.Unchecked;
+            pushToggleButton.CheckState = CheckState.Unchecked;
 
             if (recognizer.IsOutputEnabled && recognizer.OutputTwo != null)
             {

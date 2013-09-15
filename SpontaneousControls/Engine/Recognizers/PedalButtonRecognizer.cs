@@ -28,8 +28,8 @@ namespace SpontaneousControls.Engine.Recognizers
     public class PedalButtonRecognizer : DualEventRecognizer
     {
         private const float DEFAULT_SENISIVITY = 0.3f;
-        private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pedal pressed";
-        private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On pedal released";
+        private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pressed";
+        private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On released";
 
         public delegate void PedalButtonPressedHandler(object sender);
         public event PedalButtonPressedHandler PedalButtonPressed;
@@ -47,7 +47,7 @@ namespace SpontaneousControls.Engine.Recognizers
         {
             get
             {
-                return "Pedal button";
+                return "Trigger/rocker switch";
             }
         }
 

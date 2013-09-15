@@ -61,6 +61,10 @@ namespace SpontaneousControls.Engine
             {
                 Recognizer = new MovementRecognizer();
             }
+            else if (name == PushButtonRecognizer.FreindlyName)
+            {
+                Recognizer = new PushButtonRecognizer();
+            }
         }
 
         public void Update(MotionData data)

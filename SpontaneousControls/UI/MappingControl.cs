@@ -74,6 +74,7 @@ namespace SpontaneousControls.UI
             selectControlTypeCombo.Items.Add(DialRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(RotaryEncoderRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(MovementRecognizer.FreindlyName);
+            selectControlTypeCombo.Items.Add(PushButtonRecognizer.FreindlyName);
             selectControlTypeCombo.SelectedIndex = 0;
         }
 
@@ -111,6 +112,10 @@ namespace SpontaneousControls.UI
             else if (Mapping.Recognizer is MovementRecognizer)
             {
                 control = new MovementControl((MovementRecognizer)Mapping.Recognizer);
+            }
+            else if (Mapping.Recognizer is PushButtonRecognizer)
+            {
+                control = new PushButtonControl((PushButtonRecognizer)Mapping.Recognizer);
             }
 
             if (control != null)
