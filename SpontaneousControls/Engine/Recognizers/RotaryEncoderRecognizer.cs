@@ -29,7 +29,7 @@ namespace SpontaneousControls.Engine.Recognizers
     {
         private const string ROTARY_ENCODER_OUTPUT_ONE_FRIENDLY_NAME = "On rotate clockwise";
         private const string ROTARY_ENCODER_OUTPUT_TWO_FRIENDLY_NAME = "On rotate anti-clockwise";
-        private const int DEFAULT_INCREMENTS = 15;
+        private const int DEFAULT_INCREMENTS = 10;
 
         public delegate void RotaryEncoderClockwiseHandler(object sender);
         public event RotaryEncoderClockwiseHandler RotaryEncoderClockwise;
@@ -49,6 +49,7 @@ namespace SpontaneousControls.Engine.Recognizers
 
         private Vector3 start;
         private Vector3 quarter;
+        private Vector3 end;
         private int last;
 
         public RotaryEncoderRecognizer(int increments = DEFAULT_INCREMENTS)
@@ -69,6 +70,11 @@ namespace SpontaneousControls.Engine.Recognizers
             quarter = lpData;
         }
 
+        public void SaveEnd()
+        {
+            end = lpData;
+        }
+
         public override void Update(MotionData data)
         {
             base.Update(data);
@@ -76,20 +82,25 @@ namespace SpontaneousControls.Engine.Recognizers
             if (start != null &&
                 start.Length() != 0.0f &&
                 quarter != null &&
-                quarter.Length() != 0.0f)
+                quarter.Length() != 0.0f &&
+                end != null &&
+                end.Length() != 0.0f)
             {
-                Vector3 end = new Vector3(-start.X, -start.Y, -start.Z);
-
                 Vector3 lpDataN, startN, quarterN, endN;
                 Vector3.Normalize(ref lpData, out lpDataN);
                 Vector3.Normalize(ref start, out startN);
                 Vector3.Normalize(ref quarter, out quarterN);
                 Vector3.Normalize(ref end, out endN);
 
-                float total = 1.0f - Vector3.Dot(startN, endN);
-                float fromStart = (1.0f - Vector3.Dot(lpDataN, startN)) / total;
-                float fromEnd = (1.0f - Vector3.Dot(lpDataN, endN)) / total;
-                float v = MathHelper.Clamp((fromStart + (1.0f - fromEnd)) / 2.0f, 0.0f, 1.0f);
+                float total = Vector3.Dot(startN, endN);
+                float fromStart = Vector3.Dot(lpDataN, startN);
+                float fromEnd = Vector3.Dot(lpDataN, endN);
+
+                float aTotal = (float)Math.Acos((double)total);
+                float aFromStart = (float)Math.Acos((double)fromStart) / aTotal;
+                float aFromEnd = (float)Math.Acos((double)fromEnd) / aTotal;
+
+                float v = MathHelper.Clamp((aFromStart + (1.0f - aFromEnd)) / 2.0f, 0.0f, 1.0f);
 
                 Vector3 vn = Vector3.Cross(start, quarter);
                 Vector3 v3 = Vector3.Cross(vn, lpData);

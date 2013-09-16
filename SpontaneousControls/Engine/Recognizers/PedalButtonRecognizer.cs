@@ -28,8 +28,8 @@ namespace SpontaneousControls.Engine.Recognizers
     public class PedalButtonRecognizer : DualEventRecognizer
     {
         private const float DEFAULT_SENISIVITY = 0.3f;
-        private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pedal pressed";
-        private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On pedal released";
+        private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pressed";
+        private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On released";
 
         public delegate void PedalButtonPressedHandler(object sender);
         public event PedalButtonPressedHandler PedalButtonPressed;
@@ -47,7 +47,7 @@ namespace SpontaneousControls.Engine.Recognizers
         {
             get
             {
-                return "Pedal button";
+                return "Trigger/rocker switch";
             }
         }
 
@@ -76,11 +76,21 @@ namespace SpontaneousControls.Engine.Recognizers
 
             if (up != null && down != null)
             {
-                float total = 1.0f - Vector3.Dot(up, down);
-                float fromUp = (1.0f - Vector3.Dot(up, lpData)) / total;
-                float fromDown = (1.0f - Vector3.Dot(down, lpData)) / total;
+                Vector3 lpDataN, upN, downN;
+                Vector3.Normalize(ref lpData, out lpDataN);
+                Vector3.Normalize(ref up, out upN);
+                Vector3.Normalize(ref down, out downN);
 
-                float position = MathHelper.Clamp((fromUp + (1.0f - fromDown)) / 2.0f, 0.0f, 1.0f);
+                float total = Vector3.Dot(upN, downN);
+                float fromUp = Vector3.Dot(upN, lpDataN);
+                float fromDown = Vector3.Dot(downN, lpDataN);
+
+                float aTotal = (float)Math.Acos((double)total);
+                float aFromUp = (float)Math.Acos((double)fromUp) / aTotal;
+                float aFromDown = (float)Math.Acos((double)fromDown) / aTotal;
+
+                float position = MathHelper.Clamp((aFromUp + (1.0f - aFromDown)) / 2.0f, 0.0f, 1.0f);
+
                 if (!pressed && position > (1.0f - Sensitivity))
                 {
                     pressed = true;

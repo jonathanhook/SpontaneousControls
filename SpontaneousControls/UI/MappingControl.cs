@@ -35,16 +35,19 @@ namespace SpontaneousControls.UI
 {
     public partial class MappingControl : UserControl
     {
-        private Mapping mapping;
+        public delegate void SensorIdChangedHandler(object sender, int id);
+        public event SensorIdChangedHandler SensorIdChanged;
+
+        public Mapping Mapping { get; private set; }
 
         public MappingControl()
         {
             InitializeComponent();
 
-            mapping = new Mapping((int)sensorIdBox.Value);
-            mapping.DataReceived += mapping_DataReceived;
+            Mapping = new Mapping((int)sensorIdBox.Value);
+            Mapping.DataReceived += Mapping_DataReceived;
 
-            ControlManager.GetInstance().RegisterMapping(mapping);
+            ControlManager.GetInstance().RegisterMapping(Mapping);
 
             PopulateControlTypes();
         }
@@ -54,7 +57,7 @@ namespace SpontaneousControls.UI
             outputEnabled.CheckState = CheckState.Unchecked;
         }
 
-        private void mapping_DataReceived(object sender, MotionData data)
+        private void Mapping_DataReceived(object sender, MotionData data)
         {
             this.Invoke(new Action(() =>
             {
@@ -71,38 +74,48 @@ namespace SpontaneousControls.UI
             selectControlTypeCombo.Items.Add(DialRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(RotaryEncoderRecognizer.FreindlyName);
             selectControlTypeCombo.Items.Add(MovementRecognizer.FreindlyName);
+            selectControlTypeCombo.Items.Add(PushButtonRecognizer.FreindlyName);
             selectControlTypeCombo.SelectedIndex = 0;
         }
 
         private void sensorIdBox_ValueChanged(object sender, EventArgs e)
         {
-            mapping.SensorId = (int)sensorIdBox.Value;
+            Mapping.SensorId = (int)sensorIdBox.Value;
+
+            if (SensorIdChanged != null)
+            {
+                SensorIdChanged(this, Mapping.SensorId);
+            }
         }
 
         private void selectControlTypeCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mapping.SetRecognizerByName(selectControlTypeCombo.SelectedItem.ToString());
+            Mapping.SetRecognizerByName(selectControlTypeCombo.SelectedItem.ToString());
 
             Control control = null;
-            if (mapping.Recognizer is CircularSliderRecognizer)
+            if (Mapping.Recognizer is CircularSliderRecognizer)
             {
-                control = new CircularSliderControl((CircularSliderRecognizer)mapping.Recognizer);
+                control = new CircularSliderControl((CircularSliderRecognizer)Mapping.Recognizer);
             }
-            else if (mapping.Recognizer is PedalButtonRecognizer)
+            else if (Mapping.Recognizer is PedalButtonRecognizer)
             {
-                control = new PedalButtonControl((PedalButtonRecognizer)mapping.Recognizer);
+                control = new PedalButtonControl((PedalButtonRecognizer)Mapping.Recognizer);
             }
-            else if (mapping.Recognizer is DialRecognizer)
+            else if (Mapping.Recognizer is DialRecognizer)
             {
-                control = new DialRecognizerControl((DialRecognizer)mapping.Recognizer);
+                control = new DialRecognizerControl((DialRecognizer)Mapping.Recognizer);
             }
-            else if (mapping.Recognizer is RotaryEncoderRecognizer)
+            else if (Mapping.Recognizer is RotaryEncoderRecognizer)
             {
-                control = new RotaryEncoderControl((RotaryEncoderRecognizer)mapping.Recognizer);
+                control = new RotaryEncoderControl((RotaryEncoderRecognizer)Mapping.Recognizer);
             }
-            else if (mapping.Recognizer is MovementRecognizer)
+            else if (Mapping.Recognizer is MovementRecognizer)
             {
-                control = new MovementControl((MovementRecognizer)mapping.Recognizer);
+                control = new MovementControl((MovementRecognizer)Mapping.Recognizer);
+            }
+            else if (Mapping.Recognizer is PushButtonRecognizer)
+            {
+                control = new PushButtonControl((PushButtonRecognizer)Mapping.Recognizer);
             }
 
             if (control != null)
@@ -114,17 +127,17 @@ namespace SpontaneousControls.UI
             }
 
             Control output = null;
-            if(mapping.Recognizer is ContinuousValueRecognizer)
+            if(Mapping.Recognizer is ContinuousValueRecognizer)
             {
-                output = new ContinuousValueRecognizerOutputControl((ContinuousValueRecognizer)mapping.Recognizer);
+                output = new ContinuousValueRecognizerOutputControl((ContinuousValueRecognizer)Mapping.Recognizer);
             }
-            else if (mapping.Recognizer is EventRecognizer)
+            else if (Mapping.Recognizer is EventRecognizer)
             {
-                output = new EventRecognizerOutputControl((EventRecognizer)mapping.Recognizer);
+                output = new EventRecognizerOutputControl((EventRecognizer)Mapping.Recognizer);
             }
-            else if (mapping.Recognizer is DualEventRecognizer)
+            else if (Mapping.Recognizer is DualEventRecognizer)
             {
-                output = new DualEventRecognizerOutputControl((DualEventRecognizer)mapping.Recognizer);
+                output = new DualEventRecognizerOutputControl((DualEventRecognizer)Mapping.Recognizer);
             }
 
             if (output != null)
@@ -138,7 +151,7 @@ namespace SpontaneousControls.UI
 
         private void outputEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            mapping.Recognizer.IsOutputEnabled = outputEnabled.CheckState == CheckState.Checked ? true : false;
+            Mapping.Recognizer.IsOutputEnabled = outputEnabled.CheckState == CheckState.Checked ? true : false;
         }
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="Engine\Recognizers\DualEventRecognizer.cs" />
     <Compile Include="Engine\Recognizers\MovementRecognizer.cs" />
     <Compile Include="Engine\Recognizers\PedalButtonRecognizer.cs" />
+    <Compile Include="Engine\Recognizers\PushButtonRecognizer.cs" />
     <Compile Include="Engine\Recognizers\Recognizer.cs" />
     <Compile Include="Engine\Recognizers\EventRecognizer.cs" />
     <Compile Include="Engine\Recognizers\CircularSliderRecognizer.cs" />
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="UI\Controls\MovementControl.Designer.cs">
       <DependentUpon>MovementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\PushButtonControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\PushButtonControl.Designer.cs">
+      <DependentUpon>PushButtonControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\RotaryEncoderControl.cs">
       <SubType>UserControl</SubType>
@@ -204,6 +211,12 @@
     <Compile Include="UI\Trainers\PedalButtonTrainer.Designer.cs">
       <DependentUpon>PedalButtonTrainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Trainers\PushButtonTrainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Trainers\PushButtonTrainer.Designer.cs">
+      <DependentUpon>PushButtonTrainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Trainers\RotaryEncoderTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Controls\MovementControl.resx">
       <DependentUpon>MovementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\PushButtonControl.resx">
+      <DependentUpon>PushButtonControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Controls\RotaryEncoderControl.resx">
       <DependentUpon>RotaryEncoderControl.cs</DependentUpon>
@@ -279,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Trainers\PedalButtonTrainer.resx">
       <DependentUpon>PedalButtonTrainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Trainers\PushButtonTrainer.resx">
+      <DependentUpon>PushButtonTrainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Trainers\RotaryEncoderTrainer.resx">
       <DependentUpon>RotaryEncoderTrainer.cs</DependentUpon>

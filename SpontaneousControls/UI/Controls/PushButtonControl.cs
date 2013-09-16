@@ -30,40 +30,49 @@ using SpontaneousControls.UI.Trainers;
 
 namespace SpontaneousControls.UI.Controls
 {
-    public partial class CircularSliderControl : UserControl
+    public partial class PushButtonControl : UserControl
     {
-        private CircularSliderRecognizer recognizer;
+        private PushButtonRecognizer recognizer;
 
-        public CircularSliderControl(CircularSliderRecognizer recognizer)
+        public PushButtonControl(PushButtonRecognizer recognizer)
         {
-            InitializeComponent();
-
             this.recognizer = recognizer;
-            recognizer.ValueChanged += recognizer_ValueChanged;
+            recognizer.PushButtonPressed += recognizer_PushButtonPressed;
+            recognizer.PushButtonReleased += recognizer_PushButtonReleased;
+
+            InitializeComponent();
         }
 
-        void recognizer_ValueChanged(object sender, float value)
+        private void recognizer_PushButtonReleased(object sender)
         {
             this.Invoke(new Action(() =>
             {
-                sliderTrackBar.Value = (int)Math.Round(value * (float)sliderTrackBar.Maximum);
+                pushToggleButton.CheckState = CheckState.Unchecked;
+            }));
+        }
+
+        private void recognizer_PushButtonPressed(object sender)
+        {
+            this.Invoke(new Action(() =>
+            {
+                pushToggleButton.CheckState = CheckState.Checked;
             }));
         }
 
         private void trainButton_Click(object sender, EventArgs e)
         {
-            CircularSliderTrainer trainer = new CircularSliderTrainer(recognizer);
+            PushButtonTrainer trainer = new PushButtonTrainer(recognizer);
             trainer.StartPosition = FormStartPosition.CenterParent;
             trainer.Show();
         }
 
-        private void sliderTrackBar_Scroll(object sender, EventArgs e)
+        private void pushToggleButton_MouseUp(object sender, MouseEventArgs e)
         {
-            recognizer.Value = (float)sliderTrackBar.Value / (float)sliderTrackBar.Maximum;
+            pushToggleButton.CheckState = CheckState.Unchecked;
 
-            if (recognizer.IsOutputEnabled && recognizer.Output != null)
+            if (recognizer.IsOutputEnabled && recognizer.OutputTwo != null)
             {
-                recognizer.Output.Trigger(recognizer.Value);
+                recognizer.OutputTwo.Trigger();
             }
         }
     }

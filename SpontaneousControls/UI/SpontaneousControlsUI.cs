@@ -34,13 +34,48 @@ namespace SpontaneousControls.UI
         public SpontaneousControlsUI()
         {
             InitializeComponent();
+            CreateNewTab();
+        }
 
-            ControlManager.GetInstance();
+        private void CreateNewTab()
+        {
+            TabPage page = new TabPage();
+
+            MappingControl mapping = new MappingControl();
+            mapping.Width = page.Width;
+            mapping.Height = page.Height;
+            mapping.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            mapping.SensorIdChanged += mapping_SensorIdChanged;
+
+            page.Text = mapping.Mapping.SensorId.ToString();
+            page.Controls.Add(mapping);
+            tabControl.Controls.Add(page);
+        }
+
+        private void mapping_SensorIdChanged(object sender, int id)
+        {
+            foreach (TabPage p in tabControl.Controls)
+            {
+                if (p.Controls.Contains((MappingControl)sender))
+                {
+                    p.Text = id.ToString();
+                }
+            }
         }
 
         private void SpontaneousControlsUI_KeyPress(object sender, KeyPressEventArgs e)
         {
-            mappingControl1.DisableOutput();
+            //mappingControl1.DisableOutput();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateNewTab();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl.Controls.Remove(tabControl.SelectedTab);
         }
     }
 }

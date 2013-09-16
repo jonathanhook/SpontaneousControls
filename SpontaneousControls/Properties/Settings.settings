@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="WaxRecPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"X:\GitHub\SpontaneousControls\Dependencies\waxrec.exe"</Value>
+      <Value Profile="(Default)">"C:\GitHub\SpontaneousControls\Dependencies\waxrec.exe"</Value>
     </Setting>
     <Setting Name="FindComPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"X:\GitHub\SpontaneousControls\Dependencies\findcom.exe"</Value>
+      <Value Profile="(Default)">"C:\GitHub\SpontaneousControls\Dependencies\findcom.exe"</Value>
     </Setting>
     <Setting Name="HardCodedCOM" Type="System.String" Scope="User">
       <Value Profile="(Default)">COM3</Value>

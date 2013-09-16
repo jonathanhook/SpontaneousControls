@@ -48,12 +48,12 @@ namespace SpontaneousControls.UI.Trainers
 
         private void pressedButton_Click(object sender, EventArgs e)
         {
-            recognizer.SaveUp();
+            recognizer.SaveDown();
         }
 
         private void releasedButton_Click(object sender, EventArgs e)
         {
-            recognizer.SaveDown();
+            recognizer.SaveUp();
         }
 
         private void sensitivityTrackBar_Scroll(object sender, EventArgs e)
