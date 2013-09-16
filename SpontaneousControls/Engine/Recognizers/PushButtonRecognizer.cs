@@ -32,6 +32,7 @@ namespace SpontaneousControls.Engine.Recognizers
         private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pressed";
         private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On released";
         private const double RECORDING_TIME = 2000.0;
+        private const int PCA_SAMPLES = 100;
 
         public delegate void PushButtonPressedHandler(object sender);
         public event PushButtonPressedHandler PushButtonPressed;
@@ -51,6 +52,9 @@ namespace SpontaneousControls.Engine.Recognizers
         private SlidingWindow window;
         private Vector3 direction;
         private bool trained;
+
+        private double[,] pcaData;
+        private int count = 0;
 
         new public static string FreindlyName
         {
@@ -77,9 +81,15 @@ namespace SpontaneousControls.Engine.Recognizers
 
         public void SavePress()
         {
+            /*
             window.Reset();
             recordingStarted = DateTime.UtcNow;
             recording = true;
+             */
+
+            recording = true;
+            pcaData = new double[PCA_SAMPLES, 3];
+            count = 0;
         }
 
         public void SaveRelease()
@@ -89,15 +99,97 @@ namespace SpontaneousControls.Engine.Recognizers
 
         public override void Update(MotionData data)
         {
+            /*************************************************************************
+            Principal components analysis
+
+            Subroutine  builds  orthogonal  basis  where  first  axis  corresponds  to
+            direction with maximum variance, second axis maximizes variance in subspace
+            orthogonal to first axis and so on.
+
+            It should be noted that, unlike LDA, PCA does not use class labels.
+
+            INPUT PARAMETERS:
+            X           -   dataset, array[0..NPoints-1,0..NVars-1].
+                            matrix contains ONLY INDEPENDENT VARIABLES.
+            NPoints     -   dataset size, NPoints>=0
+            NVars       -   number of independent variables, NVars>=1
+
+            ÂÛÕÎÄÍÛÅ ÏÀÐÀÌÅÒÐÛ:
+            Info        -   return code:
+                            * -4, if SVD subroutine haven't converged
+                            * -1, if wrong parameters has been passed (NPoints<0,
+                                    NVars<1)
+                            *  1, if task is solved
+            S2          -   array[0..NVars-1]. variance values corresponding
+                            to basis vectors.
+            V           -   array[0..NVars-1,0..NVars-1]
+                            matrix, whose columns store basis vectors.
+
+            -- ALGLIB --
+                Copyright 25.08.2008 by Bochkanov Sergey
+            *************************************************************************/
+
             base.Update(data);
 
             if (recording)
             {
+                pcaData[count, 0] = rawData.X;
+                pcaData[count, 1] = rawData.Y;
+                pcaData[count, 2] = rawData.Z;
+                count++;
+
+                if (count >= PCA_SAMPLES)
+                {
+                    double mx = 0;
+                    double my = 0;
+                    double mz = 0;
+                    for (int i = 0; i < PCA_SAMPLES; i++)
+                    {
+                        mx += (pcaData[i, 0] / (double)PCA_SAMPLES);
+                        my += (pcaData[i, 1] / (double)PCA_SAMPLES);
+                        mz += (pcaData[i, 2] / (double)PCA_SAMPLES);
+                    }
+
+                    for (int i = 0; i < PCA_SAMPLES; i++)
+                    {
+                        pcaData[i, 0] -= mx;
+                        pcaData[i, 0] -= my;
+                        pcaData[i, 0] -= mz;
+                    }
+
+                    int info;
+                    double[] s2;
+                    double[,] v;
+                    alglib.pcabuildbasis(pcaData, PCA_SAMPLES, 3, out info, out s2, out v);
+
+                    if (info == 1)
+                    {
+
+                    }
+
+                    recording = false;
+                }
+            }
+            else
+            {
+
+            }
+
+
+            /*
+            if (recording)
+            {
+                Console.WriteLine(hpData.X + ", " + hpData.Y + ", " + hpData.Z);
+
                 TimeSpan elapsed = DateTime.UtcNow - recordingStarted;
                 if (elapsed > TimeSpan.FromMilliseconds(RECORDING_TIME))
                 {
                     recording = false;
 
+
+                    //alglib.pcabuildbasis(
+
+                    
                     Vector3 maximaIndices = new Vector3();
                     Vector3 maxima = window.GetMaxima(out maximaIndices);
 
@@ -142,15 +234,17 @@ namespace SpontaneousControls.Engine.Recognizers
                 }
                 else
                 {
-                    window.Update(hpData);
+                    //window.Update(hpData);
+
+
+
                 }
             }
             else if (direction != null)
             {
+#if PRESS_AND_RELEASE
                 float top = Vector3.Dot(hpData, direction);
                 top = top / direction.Length();
-
-#if PRESS_AND_RELEASE
 
                 if (top > 0.2)
                 {
@@ -208,30 +302,31 @@ namespace SpontaneousControls.Engine.Recognizers
 
                 Vector3 result = new Vector3(x, y, z);
                 float magnitude = result.Length();
-                */
+                *//*
 #else
-                if (top > Sensitivity)
+                float projection = Vector3.Dot(hpData, direction);
+
+                if (projection > Sensitivity)
                 {
                     DateTime now = DateTime.UtcNow;
                     TimeSpan elapsed = now - lastState;
                     if (elapsed > TimeSpan.FromMilliseconds(REPEAT_TIME))
                     {
-                        Console.WriteLine("Bang");
+                        if (PushButtonPressed != null)
+                        {
+                            PushButtonPressed(this);
+                        }
+
+                        if (IsOutputEnabled && OutputOne != null)
+                        {
+                            OutputOne.Trigger();
+                        }
+
                         lastState = now;
-                    }
-
-                    if (PushButtonPressed != null)
-                    {
-                        PushButtonPressed(this);
-                    }
-
-                    if (IsOutputEnabled && OutputOne != null)
-                    {
-                        OutputOne.Trigger();
                     }
                 }
 #endif
-            }
+            }*/
         }
     }
 }

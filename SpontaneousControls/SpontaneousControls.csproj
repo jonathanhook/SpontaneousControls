@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="alglibnet2">
+      <HintPath>..\Dependencies\alglib-3.8.0.csharp\csharp\alglibnet2.dll</HintPath>
+    </Reference>
     <Reference Include="Bespoke.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=843a094264521388, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Bespoke.Common.dll</HintPath>
