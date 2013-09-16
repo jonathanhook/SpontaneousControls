@@ -119,7 +119,6 @@
             this.releasedButton.TabIndex = 1;
             this.releasedButton.Text = "Release";
             this.releasedButton.UseVisualStyleBackColor = true;
-            this.releasedButton.Click += new System.EventHandler(this.releasedButton_Click);
             // 
             // label2
             // 

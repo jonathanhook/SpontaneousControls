@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="HardCodedCOM" Type="System.String" Scope="User">
-      <Value Profile="(Default)">COM3</Value>
+      <Value Profile="(Default)">COM7</Value>
     </Setting>
     <Setting Name="HardCodedUDP" Type="System.String" Scope="User">
       <Value Profile="(Default)">3333</Value>
     </Setting>
     <Setting Name="WaxRecPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"X:\GitHub\SpontaneousControls\Dependencies\waxrec.exe"</Value>
+      <Value Profile="(Default)">"C:\Users\Jon\Documents\GitHub\SpontaneousControls\Dependencies\waxrec.exe"</Value>
     </Setting>
     <Setting Name="FindComPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">X:\GitHub\SpontaneousControls\Dependencies\findcom.exe"</Value>
+      <Value Profile="(Default)">"C:\Users\Jon\Documents\GitHub\SpontaneousControls\Dependencies\findcom.exe"</Value>
     </Setting>
   </Settings>
 </SettingsFile>
