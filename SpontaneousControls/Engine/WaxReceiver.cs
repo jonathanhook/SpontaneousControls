@@ -132,6 +132,9 @@ namespace SpontaneousControls.Engine
             {
                 comPort = data.Split(new string[1] { @"\\.\" }, StringSplitOptions.RemoveEmptyEntries)[0];
             }
+
+
+            comPort = Properties.Settings.Default.HardCodedCOM;
         }
 
         private void osc_BundleReceived(object sender, OscBundleReceivedEventArgs e)

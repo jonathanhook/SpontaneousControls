@@ -29,7 +29,7 @@ namespace SpontaneousControls.Engine.Recognizers
     {
         private const float DEFAULT_SENISIVITY = 0.3f;
         private const float DEFAULT_REPEAT = 0.5f;
-        private const float MAX_REPEAT = 2000.0f;
+        private const float MAX_REPEAT = 10000.0f;
         private const string MOVEMENT_OUTPUT_FRIENDLY_NAME = "On movement";
 
         public delegate void MovementOccurredHander(object sender);
