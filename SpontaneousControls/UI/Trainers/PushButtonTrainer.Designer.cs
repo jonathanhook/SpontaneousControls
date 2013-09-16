@@ -153,6 +153,7 @@
             this.pressedButton.Text = "Press";
             this.pressedButton.UseVisualStyleBackColor = true;
             this.pressedButton.Click += new System.EventHandler(this.pressedButton_Click);
+            this.pressedButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pressedButton_MouseDown);
             // 
             // label3
             // 

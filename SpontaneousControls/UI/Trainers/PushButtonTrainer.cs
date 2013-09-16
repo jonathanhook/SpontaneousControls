@@ -34,12 +34,17 @@ namespace SpontaneousControls.UI.Trainers
 
         private void pressedButton_Click(object sender, EventArgs e)
         {
-            recognizer.SavePress();
+            
         }
 
         private void releasedButton_Click(object sender, EventArgs e)
         {
             recognizer.SaveRelease();
+        }
+
+        private void pressedButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            recognizer.SavePress();
         }
     }
 }

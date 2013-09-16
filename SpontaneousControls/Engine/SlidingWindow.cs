@@ -28,75 +28,104 @@ namespace SpontaneousControls.Engine
     public class SlidingWindow
     {
         public int Size { get; private set; }
+        public int SamplesRecorded { get; private set; }
         public Queue<Vector3> Window { get; private set; }
 
         public SlidingWindow(int size)
         {
             this.Size = size;
+
+            SamplesRecorded = 0;
             Window = new Queue<Vector3>(size);
         }
 
         public void Update(Vector3 sample)
         {
             Window.Enqueue(sample);
+            SamplesRecorded++;
 
             if (Window.Count > Size)
             {
                 Window.Dequeue();
+                SamplesRecorded--;
             }
         }
 
-        public Vector3 GetMaxima()
+        public Vector3 GetMaxima(out Vector3 indices)
         {
             float mx = -999.0f;
             float my = -999.0f;
             float mz = -999.0f;
+            indices = new Vector3();
 
-            foreach (Vector3 v in Window)
+            for (int i = 0; i < SamplesRecorded; i++)
             {
+                Vector3 v = Window.ElementAt(i);
+
                 if (v.X > mx)
                 {
                     mx = v.X;
+                    indices.X = i;
                 }
                 if (v.Y > my)
                 {
                     my = v.Y;
+                    indices.Y = i;
                 }
                 if (v.Z > mz)
                 {
                     mz = v.Z;
+                    indices.Z = i;
                 }
             }
 
             return new Vector3(mx, my, mz);
         }
 
-        public Vector3 GetMinima()
+        public Vector3 GetMinima(out Vector3 indices)
         {
             float mx = 999.0f;
             float my = 999.0f;
             float mz = 999.0f;
+            indices = new Vector3();
 
-            foreach (Vector3 v in Window)
+            for (int i = 0; i < SamplesRecorded; i++)
             {
+                Vector3 v = Window.ElementAt(i);
+
                 if (v.X < mx)
                 {
                     mx = v.X;
+                    indices.X = i;
                 }
                 if (v.Y < my)
                 {
                     my = v.Y;
+                    indices.Y = i;
                 }
                 if (v.Z < mz)
                 {
                     mz = v.Z;
+                    indices.Z = i;
                 }
             }
 
             return new Vector3(mx, my, mz);
         }
 
-        
+        public void Reset()
+        {
+            SamplesRecorded = 0;
+            Window.Clear();
+        }
 
+        public void Print()
+        {
+            for (int i = 0; i < SamplesRecorded; i++)
+            {
+                Vector3 v = Window.ElementAt(i);
+                Console.WriteLine(v.X + ", " + v.Y + ", " + v.Z);
+            }
+        }
     }
 }

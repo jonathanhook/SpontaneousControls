@@ -2,17 +2,17 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SpontaneousControls.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="WaxRecPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"C:\GitHub\SpontaneousControls\Dependencies\waxrec.exe"</Value>
-    </Setting>
-    <Setting Name="FindComPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"C:\GitHub\SpontaneousControls\Dependencies\findcom.exe"</Value>
-    </Setting>
     <Setting Name="HardCodedCOM" Type="System.String" Scope="User">
       <Value Profile="(Default)">COM3</Value>
     </Setting>
     <Setting Name="HardCodedUDP" Type="System.String" Scope="User">
       <Value Profile="(Default)">3333</Value>
+    </Setting>
+    <Setting Name="WaxRecPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"X:\GitHub\SpontaneousControls\Dependencies\waxrec.exe"</Value>
+    </Setting>
+    <Setting Name="FindComPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\GitHub\SpontaneousControls\Dependencies\findcom.exe"</Value>
     </Setting>
   </Settings>
 </SettingsFile>
