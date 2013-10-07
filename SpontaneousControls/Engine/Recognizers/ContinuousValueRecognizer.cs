@@ -37,6 +37,10 @@ namespace SpontaneousControls.Engine.Recognizers
             {
                 Output = new AbsoluteMousePositionOutput();
             }
+            else if (name == AbsoluteVolumeOutput.FreindlyName)
+            {
+                Output = new AbsoluteVolumeOutput();
+            }
         }
     }
 }

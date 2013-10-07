@@ -38,6 +38,8 @@ namespace SpontaneousControls.UI.Outputs.Discrete
         private const string PREVIOUS_TRACK = "Previous track";
         private const string STOP = "Stop";
         private const string PLAY_PAUSE = "Play/pause";
+        private const string OPEN = "Open";
+        private const string CLOSE = "Close";
 
         private MediaPlayerOutput output;
 
@@ -58,6 +60,8 @@ namespace SpontaneousControls.UI.Outputs.Discrete
             actionCombo.Items.Add(PREVIOUS_TRACK);
             actionCombo.Items.Add(STOP);
             actionCombo.Items.Add(PLAY_PAUSE);
+            actionCombo.Items.Add(OPEN);
+            actionCombo.Items.Add(CLOSE);
             actionCombo.SelectedIndex = 0;
         }
 
@@ -91,6 +95,14 @@ namespace SpontaneousControls.UI.Outputs.Discrete
             else if (selection == PLAY_PAUSE)
             {
                 output.EventType = MediaPlayerOutput.MediaPlayerEventType.MediaPlayPause;
+            }
+            else if (selection == OPEN)
+            {
+                output.EventType = MediaPlayerOutput.MediaPlayerEventType.Open;
+            }
+            else if (selection == CLOSE)
+            {
+                output.EventType = MediaPlayerOutput.MediaPlayerEventType.Close;
             }
         }
     }

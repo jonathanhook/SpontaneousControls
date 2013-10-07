@@ -75,7 +75,11 @@ namespace SpontaneousControls.UI
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MappingControl mc = (MappingControl)tabControl.SelectedTab.Controls[0];
+
             tabControl.Controls.Remove(tabControl.SelectedTab);
+
+            ControlManager.GetInstance().UnRegisterMapping(mc.Mapping);
         }
     }
 }

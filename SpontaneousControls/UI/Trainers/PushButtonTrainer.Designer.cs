@@ -70,7 +70,7 @@
             this.sensitivityTrackBar.Name = "sensitivityTrackBar";
             this.sensitivityTrackBar.Size = new System.Drawing.Size(244, 45);
             this.sensitivityTrackBar.TabIndex = 1;
-            this.sensitivityTrackBar.Value = 5;
+            this.sensitivityTrackBar.Value = 8;
             this.sensitivityTrackBar.Scroll += new System.EventHandler(this.sensitivityTrackBar_Scroll);
             // 
             // label4

@@ -19,8 +19,10 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SpontaneousControls.Engine.Outputs.Discrete
@@ -35,8 +37,12 @@ namespace SpontaneousControls.Engine.Outputs.Discrete
             MediaNextTrack = 176,
             MediaPreviousTrack = 177,
             MediaStop = 178,
-            MediaPlayPause = 179
+            MediaPlayPause = 179,
+            Open = 180,
+            Close = 181
         }
+
+        private Process process;
 
         public MediaPlayerEventType EventType { get; set; }
 
@@ -55,6 +61,17 @@ namespace SpontaneousControls.Engine.Outputs.Discrete
 
         public override void Trigger()
         {
+            if(EventType == MediaPlayerEventType.Open)
+            {
+                process = Process.Start(@"C:\Program Files (x86)\Windows Media Player\wmplayer.exe"); 
+            }
+            else if(EventType == MediaPlayerEventType.Close)
+            {
+                string strCmdText;
+                strCmdText = "/F /IM wmplayer.exe";
+                System.Diagnostics.Process.Start("TASKKILL.exe", strCmdText);
+            }
+
             Keyboard.GetInstance().Tap((Keys)EventType);
         }
     }

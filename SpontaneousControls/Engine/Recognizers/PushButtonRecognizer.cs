@@ -27,12 +27,12 @@ namespace SpontaneousControls.Engine.Recognizers
 {
     public class PushButtonRecognizer : DualEventRecognizer
     {
-        private const float DEFAULT_SENISIVITY = 0.3f;
+        private const float DEFAULT_SENISIVITY = 0.8f;
         private const int REPEAT_TIME = 500;
         private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pressed";
         private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On released";
         private const double RECORDING_TIME = 2000.0;
-        private const int PCA_SAMPLES = 100;
+        private const int PCA_SAMPLES = 500;
 
         public delegate void PushButtonPressedHandler(object sender);
         public event PushButtonPressedHandler PushButtonPressed;
@@ -76,9 +76,10 @@ namespace SpontaneousControls.Engine.Recognizers
             pcaData = new double[PCA_SAMPLES, 3];
             count = 0;
         }
-
+        
         public override void Update(MotionData data)
         {
+            
             /*************************************************************************
             Principal components analysis
 
@@ -110,6 +111,8 @@ namespace SpontaneousControls.Engine.Recognizers
             *************************************************************************/
 
             base.Update(data);
+
+            
 
             if (recording)
             {
@@ -187,7 +190,7 @@ namespace SpontaneousControls.Engine.Recognizers
 
                         lastEvent = now;
 
-                        Console.WriteLine("Button pressed: " + DateTime.UtcNow.Millisecond);
+                        Console.WriteLine("Button pressed: " + data.Id + " " + projection);
                     }
                 }
             }

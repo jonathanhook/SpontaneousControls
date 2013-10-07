@@ -65,6 +65,7 @@
     <Compile Include="Engine\MotionData.cs" />
     <Compile Include="Engine\ControlManager.cs" />
     <Compile Include="Engine\Outputs\Continuous\AbsoluteMousePositionOutput.cs" />
+    <Compile Include="Engine\Outputs\Continuous\AbsoluteVolumeOutput.cs" />
     <Compile Include="Engine\Outputs\Continuous\ContinuousOuput.cs" />
     <Compile Include="Engine\Outputs\Discrete\DiscreteOutput.cs" />
     <Compile Include="Engine\Outputs\Discrete\Keyboard.cs" />
@@ -139,6 +140,12 @@
     </Compile>
     <Compile Include="UI\Outputs\Continuous\ContinuousValueRecognizerOutputControl.Designer.cs">
       <DependentUpon>ContinuousValueRecognizerOutputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Outputs\Continuous\AbsoluteVolumeOutputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Outputs\Continuous\AbsoluteVolumeOutputControl.Designer.cs">
+      <DependentUpon>AbsoluteVolumeOutputControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Outputs\Discrete\DualEventRecognizerOutputControl.cs">
       <SubType>UserControl</SubType>

@@ -47,6 +47,7 @@ namespace SpontaneousControls.UI.Outputs.Continuous
         private void PopulateOutputTypes()
         {
             outputTypeCombo.Items.Add(AbsoluteMousePositionOutput.FreindlyName);
+            outputTypeCombo.Items.Add(AbsoluteVolumeOutput.FreindlyName);
             outputTypeCombo.SelectedIndex = 0;
         }
 
@@ -58,6 +59,10 @@ namespace SpontaneousControls.UI.Outputs.Continuous
             if (recognizer.Output is AbsoluteMousePositionOutput)
             {
                 control = new AbsoluteMousePositionOutputControl((AbsoluteMousePositionOutput)recognizer.Output);
+            }
+            else if (recognizer.Output is AbsoluteVolumeOutput)
+            {
+                control = new AbsoluteVolumeOutputControl((AbsoluteVolumeOutput)recognizer.Output);
             }
 
             if (control != null)

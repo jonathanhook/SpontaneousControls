@@ -54,17 +54,17 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 13);
+            this.label1.Size = new System.Drawing.Size(261, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Follow the instructions to train your dial:";
+            this.label1.Text = "Follow the instructions to program your rotary encoder:";
             // 
             // startButton
             // 
             this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.startButton.Location = new System.Drawing.Point(131, 20);
+            this.startButton.Location = new System.Drawing.Point(147, 20);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(123, 47);
+            this.startButton.Size = new System.Drawing.Size(107, 47);
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Save start position";
             this.startButton.UseVisualStyleBackColor = true;
@@ -74,9 +74,10 @@
             // 
             this.label2.Location = new System.Drawing.Point(7, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 47);
+            this.label2.Size = new System.Drawing.Size(134, 47);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Turn your dial into its start (zero) position and press the save button.";
+            this.label2.Text = "Turn your rotary encoder\r\n into its start (zero) position and press the save butt" +
+    "on.";
             // 
             // groupBox2
             // 
@@ -95,9 +96,9 @@
             // 
             this.quarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.quarterButton.Location = new System.Drawing.Point(131, 20);
+            this.quarterButton.Location = new System.Drawing.Point(147, 20);
             this.quarterButton.Name = "quarterButton";
-            this.quarterButton.Size = new System.Drawing.Size(123, 47);
+            this.quarterButton.Size = new System.Drawing.Size(107, 47);
             this.quarterButton.TabIndex = 1;
             this.quarterButton.Text = "Save quarter Position";
             this.quarterButton.UseVisualStyleBackColor = true;
@@ -107,9 +108,9 @@
             // 
             this.label3.Location = new System.Drawing.Point(7, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 47);
+            this.label3.Size = new System.Drawing.Size(134, 47);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Turn your dial to its one quarter position and press the save button.";
+            this.label3.Text = "Turn your rotary encoder to its one quarter position and press the save button.";
             // 
             // doneButton
             // 
@@ -166,7 +167,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(245, 33);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Use the slider to set how many segments your rotary encoer will have";
+            this.label4.Text = "Use the slider to set how many notches your rotary encoer will have";
             // 
             // groupBox4
             // 
@@ -179,17 +180,17 @@
             this.groupBox4.Size = new System.Drawing.Size(259, 74);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "End Position";
+            this.groupBox4.Text = "Half Position";
             // 
             // endButton
             // 
             this.endButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.endButton.Location = new System.Drawing.Point(131, 19);
+            this.endButton.Location = new System.Drawing.Point(146, 19);
             this.endButton.Name = "endButton";
-            this.endButton.Size = new System.Drawing.Size(122, 47);
+            this.endButton.Size = new System.Drawing.Size(107, 47);
             this.endButton.TabIndex = 2;
-            this.endButton.Text = "Save end position";
+            this.endButton.Text = "Save half position";
             this.endButton.UseVisualStyleBackColor = true;
             this.endButton.Click += new System.EventHandler(this.endButton_Click);
             // 
@@ -197,9 +198,9 @@
             // 
             this.label5.Location = new System.Drawing.Point(6, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 47);
+            this.label5.Size = new System.Drawing.Size(134, 47);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Put your slider into its end position and press the save button.";
+            this.label5.Text = "Turn your rotary encoder to its half position and press the save button.";
             // 
             // RotaryEncoderTrainer
             // 

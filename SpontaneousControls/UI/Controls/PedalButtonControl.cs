@@ -62,7 +62,9 @@ namespace SpontaneousControls.UI.Controls
         private void trainButton_Click(object sender, EventArgs e)
         {
             PedalButtonTrainer trainer = new PedalButtonTrainer(recognizer);
-            trainer.StartPosition = FormStartPosition.CenterParent;
+            //trainer.StartPosition = FormStartPosition.CenterParent;
+            trainer.StartPosition = FormStartPosition.Manual;
+            trainer.Location = new Point(10, 10);
             trainer.Show();
         }
 
