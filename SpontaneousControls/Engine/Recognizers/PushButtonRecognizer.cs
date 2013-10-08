@@ -25,22 +25,19 @@ using Microsoft.Xna.Framework;
 
 namespace SpontaneousControls.Engine.Recognizers
 {
-    public class PushButtonRecognizer : DualEventRecognizer
+    public class PushButtonRecognizer : EventRecognizer
     {
-        private const float DEFAULT_SENISIVITY = 0.8f;
-        private const int REPEAT_TIME = 500;
-        private const string PEDAL_OUTPUT_ONE_FRIENDLY_NAME = "On pressed";
-        private const string PEDAL_OUTPUT_TWO_FRIENDLY_NAME = "On released";
-        private const double RECORDING_TIME = 2000.0;
+        private const float DEFAULT_SENISIVITY = 0.3f;
+        private const int DEFUALT_REPEAT_TIME = 500;
+        private const string PUSH_OUTPUT_FRIENDLY_NAME = "On pressed";
+        private const double RECORDING_TIME = 5000.0;
         private const int PCA_SAMPLES = 500;
 
         public delegate void PushButtonPressedHandler(object sender);
         public event PushButtonPressedHandler PushButtonPressed;
 
-        public delegate void PushButtonReleasedHandler(object sender);
-        public event PushButtonReleasedHandler PushButtonReleased;
-
         public float Sensitivity { get; set; }
+        public float RepeatTime { get; set; }
 
         private bool recording;
         private Vector3 direction;
@@ -58,13 +55,13 @@ namespace SpontaneousControls.Engine.Recognizers
             }
         }
 
-        public PushButtonRecognizer(float sensitivity = DEFAULT_SENISIVITY)
+        public PushButtonRecognizer(float sensitivity = DEFAULT_SENISIVITY, float repeatTime = DEFUALT_REPEAT_TIME)
         {
             this.Sensitivity = sensitivity;
+            this.RepeatTime = repeatTime;
 
-            OutputOneFriendlyName = PEDAL_OUTPUT_ONE_FRIENDLY_NAME;
-            OutputTwoFriendlyName = PEDAL_OUTPUT_TWO_FRIENDLY_NAME;
-            
+            OutputFriendlyName = PUSH_OUTPUT_FRIENDLY_NAME;
+
             recording = false;
             trained = false;
             lastEvent = DateTime.UtcNow;
@@ -111,8 +108,6 @@ namespace SpontaneousControls.Engine.Recognizers
             *************************************************************************/
 
             base.Update(data);
-
-            
 
             if (recording)
             {
@@ -166,26 +161,16 @@ namespace SpontaneousControls.Engine.Recognizers
                 {
                     DateTime now = DateTime.UtcNow;
                     TimeSpan elapsed = now - lastEvent;
-                    if (elapsed > TimeSpan.FromMilliseconds(REPEAT_TIME))
+                    if (elapsed > TimeSpan.FromMilliseconds(RepeatTime))
                     {
                         if (PushButtonPressed != null)
                         {
                             PushButtonPressed(this);
                         }
 
-                        if (PushButtonReleased != null)
+                        if (IsOutputEnabled && Output != null)
                         {
-                            PushButtonReleased(this);
-                        }
-
-                        if (IsOutputEnabled && OutputOne != null)
-                        {
-                            OutputOne.Trigger();
-                        }
-
-                        if (IsOutputEnabled && OutputTwo != null)
-                        {
-                            OutputTwo.Trigger();
+                            Output.Trigger();
                         }
 
                         lastEvent = now;

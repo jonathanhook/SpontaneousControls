@@ -12,7 +12,11 @@ namespace SpontaneousControls.UI.Trainers
 {
     public partial class PushButtonTrainer : Form
     {
+        private const int TRAINING_TIME = 5000;
+
         private PushButtonRecognizer recognizer;
+        private Timer t;
+        private DateTime started;
 
         public PushButtonTrainer(PushButtonRecognizer recognizer)
         {
@@ -32,14 +36,32 @@ namespace SpontaneousControls.UI.Trainers
             recognizer.Sensitivity = (float)sensitivityTrackBar.Value / (float)sensitivityTrackBar.Maximum;
         }
 
-        private void pressedButton_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void pressedButton_MouseDown(object sender, MouseEventArgs e)
         {
             recognizer.SavePress();
+            started = DateTime.UtcNow;
+
+            t = new Timer();
+            t.Interval = 100;
+            t.Tick += t_Tick;
+            t.Start();
+        }
+
+        private void t_Tick(object sender, EventArgs e)
+        {
+            TimeSpan span = DateTime.UtcNow - started;
+            int spanMs = (int)span.TotalMilliseconds;
+
+            if (spanMs >= TRAINING_TIME)
+            {
+                t.Stop();
+                pressedButton.Text = "Press";
+            }
+            else
+            {
+                int countDown = TRAINING_TIME - spanMs;
+                pressedButton.Text = string.Format("{0}:{1}", countDown / 1000, countDown % 1000);
+            }
         }
     }
 }

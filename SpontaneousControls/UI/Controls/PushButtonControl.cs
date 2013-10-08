@@ -27,6 +27,7 @@ using System.Text;
 using System.Windows.Forms;
 using SpontaneousControls.Engine.Recognizers;
 using SpontaneousControls.UI.Trainers;
+using System.Threading;
 
 namespace SpontaneousControls.UI.Controls
 {
@@ -38,7 +39,6 @@ namespace SpontaneousControls.UI.Controls
         {
             this.recognizer = recognizer;
             recognizer.PushButtonPressed += recognizer_PushButtonPressed;
-            recognizer.PushButtonReleased += recognizer_PushButtonReleased;
 
             InitializeComponent();
         }
@@ -56,6 +56,8 @@ namespace SpontaneousControls.UI.Controls
             this.Invoke(new Action(() =>
             {
                 pushToggleButton.CheckState = CheckState.Checked;
+                Thread.Sleep(200);
+                pushToggleButton.CheckState = CheckState.Unchecked;
             }));
         }
 
@@ -64,16 +66,6 @@ namespace SpontaneousControls.UI.Controls
             PushButtonTrainer trainer = new PushButtonTrainer(recognizer);
             trainer.StartPosition = FormStartPosition.CenterParent;
             trainer.Show();
-        }
-
-        private void pushToggleButton_MouseUp(object sender, MouseEventArgs e)
-        {
-            pushToggleButton.CheckState = CheckState.Unchecked;
-
-            if (recognizer.IsOutputEnabled && recognizer.OutputTwo != null)
-            {
-                recognizer.OutputTwo.Trigger();
-            }
         }
     }
 }

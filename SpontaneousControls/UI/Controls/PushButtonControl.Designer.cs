@@ -44,7 +44,6 @@
             this.pushToggleButton.Text = "Push Button";
             this.pushToggleButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.pushToggleButton.UseVisualStyleBackColor = true;
-            this.pushToggleButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pushToggleButton_MouseUp);
             // 
             // trainButton
             // 
